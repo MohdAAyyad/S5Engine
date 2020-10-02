@@ -1,0 +1,54 @@
+﻿  CollisionHandler.cpp
+  CollisionDetection.cpp
+  Camera.cpp
+  Debugger.cpp
+  CoreEngine.cpp
+  PhysicsComponent.cpp
+  GameObject.cpp
+  EventListener.cpp
+  FrustumCullingHandle.cpp
+  GameScene.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\gameobject.h(83): warning C4018: '<': signed/unsigned mismatch
+  d:\c++ projects\semester 5\s5engine\s5engine\week1\game\scenes\gamescene.cpp(37): note: see reference to function template instantiation 'bool GameObject::RemoveComponent<PhysicsComponent*>(void)' being compiled
+  Game1.cpp
+  LightSource.cpp
+  LoadOBJModel.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\loadobjmodel.cpp(118): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\loadobjmodel.cpp(162): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\loadobjmodel.cpp(197): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\loadobjmodel.cpp(199): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\loadobjmodel.cpp(216): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\loadobjmodel.cpp(218): warning C4018: '<': signed/unsigned mismatch
+  Main.cpp
+  Window.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\core\window.cpp(48): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+  Timer.cpp
+  StartScene.cpp
+  Mesh.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\mesh.cpp(48): warning C4018: '<': signed/unsigned mismatch
+  Model.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\model.cpp(56): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\model.cpp(64): warning C4018: '<': signed/unsigned mismatch
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\3d\model.cpp(83): warning C4018: '<': signed/unsigned mismatch
+  ShaderHandler.cpp
+  Generating Code...
+  Compiling...
+  TextureHandler.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\graphics\texturehandler.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\graphics\texturehandler.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  MouseEventListener.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\event\mouseeventlistener.cpp(88): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  SceneGraph.cpp
+  MaterialHandler.cpp
+  MaterialLoader.cpp
+  OctSpatialPartition.cpp
+  Generating Code...
+  Week1.vcxproj -> D:\C++ Projects\Semester 5\S5Engine\S5Engine\Debug\Week1.exe
