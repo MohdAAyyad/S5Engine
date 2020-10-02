@@ -42,11 +42,17 @@ void GameObject::RenderInstance(Camera* camera_)
 
 void GameObject::Update(float deltaTime_)
 {
-	angle += 0.3f * deltaTime_;
+	//angle += 0.3f * deltaTime_;
 	if (model)
 	{
 		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
 		box.transform = model->GetTransform(modelInstance);
+	}
+
+	// go through each component and update it 
+	for (Component* t : components)
+	{
+		t->Update(deltaTime_);
 	}
 }
 

@@ -2,6 +2,3 @@
 [Info]: Everything worked! in: CoreEngine.cpp on line: 82
 [Info]: Created GameScene! in: GameScene.cpp on line: 14
 [Warning]: Attempted to add a component that we have already added before in: GameObject.cpp on line: 48
-[Info]: Destroying window in: Window.cpp on line: 58
-[Info]: Destroying CoreEngine instance in: CoreEngine.cpp on line: 43
-[Info]: Destroying CoreEngine instance in: CoreEngine.cpp on line: 43

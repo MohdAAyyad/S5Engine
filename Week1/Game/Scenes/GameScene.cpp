@@ -33,10 +33,10 @@ GameScene:: ~GameScene()
 
 	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
 	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 appleObj->GetComponent<PhysicsComponent*>();
-	 appleObj->RemoveComponent<PhysicsComponent*>();
-	 appleObj->GetComponent<PhysicsComponent*>();
-	 appleObj->RemoveComponent<PhysicsComponent*>();
+	 appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
+	 //appleObj->RemoveComponent<PhysicsComponent*>();
+	 //appleObj->GetComponent<PhysicsComponent*>();
+	 //appleObj->RemoveComponent<PhysicsComponent*>();
 
 	 appleObj2->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
 
