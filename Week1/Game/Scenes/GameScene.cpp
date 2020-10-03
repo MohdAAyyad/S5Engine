@@ -26,21 +26,17 @@ GameScene:: ~GameScene()
 	 SceneGraph::GetInstance()->AddModel(model);
 	 SceneGraph::GetInstance()->AddModel(model2);
 
-	 GameObject* diceObj = new GameObject(model2, glm::vec3(4.0f, -0.5f, 0.0f));
 	 GameObject* appleObj = new GameObject(model, glm::vec3(2.0f, -0.5f, 0.0f));
 	 GameObject* appleObj2 = new GameObject(model, glm::vec3(0.0f, -0.5f, 0.0f));
+	 
 	 appleObj->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
-
 	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
-	 //appleObj->RemoveComponent<PhysicsComponent*>();
-	 //appleObj->GetComponent<PhysicsComponent*>();
-	 //appleObj->RemoveComponent<PhysicsComponent*>();
+	 appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
 
 	 appleObj2->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
+	 appleObj2->AddComponent<PhysicsComponent*>(new PhysicsComponent());
+	 appleObj2->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
 
-	 SceneGraph::GetInstance()->AddGameObject(diceObj);
 	 SceneGraph::GetInstance()->AddGameObject(appleObj, "apple");
 	 SceneGraph::GetInstance()->AddGameObject(appleObj2, "apple2");
 
