@@ -17,6 +17,7 @@ public:
 					  
 	virtual void Update(const float deltaTime_); //You don't really need the override keyword here cause these are abstract functions
 	virtual void Render();
+	virtual void Draw();
 	virtual bool OnCreate();
 
 private:

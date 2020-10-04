@@ -69,6 +69,11 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 												"Engine/Shaders/VertexShader.glsl",
 												"Engine/Shaders/FragmentShader.glsl");
 
+	// make a new shader program for handling sprites
+	ShaderHandler::GetInstance()->CreateProgram("spriteShader", 
+												"Engine/Shaders/SpriteVertShader.glsl", 
+												"Engine/Shaders/SpriteFragShader.glsl");
+
 	if (gameInterface)
 	{
 		if (!gameInterface->OnCreate())
@@ -133,6 +138,7 @@ void CoreEngine::Render()
 	if (gameInterface)
 	{
 		gameInterface->Render();
+		gameInterface->Draw();
 	}
 	//End Render Game
 

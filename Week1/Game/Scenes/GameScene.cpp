@@ -58,3 +58,9 @@ GameScene:: ~GameScene()
 	 //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	 SceneGraph::GetInstance()->Render(CoreEngine::GetInstance()->GetCamera());
  }
+
+ void GameScene::Draw()
+ {
+	 // method used specficially for rendering UI elements
+
+ }

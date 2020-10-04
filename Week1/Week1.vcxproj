@@ -196,6 +196,7 @@
     <ClInclude Include="Engine\FX\MaterialLoader.h" />
     <ClInclude Include="Engine\Core\OctSpatialPartition.h" />
     <ClInclude Include="Engine\Rendering\3D\Components\PhysicsComponent.h" />
+    <ClInclude Include="Engine\Rendering\2D\GUIObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Shaders\ColorFragmentShader.glsl" />
@@ -203,6 +204,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\FragmentShader.glsl" />
+    <None Include="Engine\Shaders\SpriteFragShader.glsl" />
+    <None Include="Engine\Shaders\SpriteVertShader.glsl" />
     <None Include="Engine\Shaders\VertexShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
