@@ -23,6 +23,17 @@ GameObject::~GameObject()
 {
 //We no longer delete the models here. They're deleted in the scene graph
 	model = nullptr;
+
+	if (components.size() > 0)
+	{
+		for (int i = 0; i < components.size(); i++)
+		{
+			delete components[i];
+			components[i] = nullptr;
+		}
+
+		components.clear();
+	}
 }
 void GameObject::Render(Camera* camera_)
 {

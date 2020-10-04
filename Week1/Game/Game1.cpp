@@ -26,6 +26,14 @@ void Game1::Render()
 	}
 
 }
+
+void Game1::Draw()
+{
+	if (currentScene)
+	{
+		currentScene->Draw();
+	}
+}
 bool Game1::OnCreate()
 {
 	if (CoreEngine::GetInstance()->GetCurrentScene() == 0) 

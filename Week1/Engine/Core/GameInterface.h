@@ -10,6 +10,7 @@ public:
 	virtual bool OnCreate() = 0;
 	virtual void Update(const float delatTime_) = 0;
 	virtual void Render() = 0;
+	virtual void Draw() = 0;
 
 };
 #endif // !GAMEINTERFACE_H

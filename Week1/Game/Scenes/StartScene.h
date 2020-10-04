@@ -11,6 +11,7 @@ public:
 	virtual bool OnCreate();
 	virtual void Update(const float deltaTime_);
 	virtual void Render();
+	virtual void Draw() override;
 
 };
 

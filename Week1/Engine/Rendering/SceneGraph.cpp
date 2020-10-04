@@ -1,10 +1,13 @@
 #include "../Math/CollisionHandler.h"
 #include "SceneGraph.h"
 #include "FrustumCullingHandle.h"
+#include <glew.h>
+#include "../Graphics/ShaderHandler.h"
 
 std::unique_ptr<SceneGraph> SceneGraph::sceneGraphInstance = nullptr;
 std::map<GLuint, std::vector<Model*>> SceneGraph::sceneModels = std::map<GLuint, std::vector<Model*>>();
 std::map<std::string, GameObject*> SceneGraph::sceneGameObjects = std::map<std::string, GameObject*>();
+std::map<std::string, GUIObject*> SceneGraph::sceneGuiObjects = std::map<std::string, GUIObject*>();
 
 SceneGraph::SceneGraph()
 {
@@ -86,6 +89,30 @@ void SceneGraph::AddGameObject(GameObject* gameObject_, std::string tag_)
 
 	CollisionHandler::GetInstance()->AddObject(gameObject_);
 }
+
+void SceneGraph::AddGUIObject(class GUIObject* guiObject_, std::string tag_)
+{
+	if (tag_ == "") //If a tag is not passed, give it a default value
+	{
+		std::string newTag = "GUIObject " + std::to_string(sceneGameObjects.size() + 1);
+		guiObject_->SetTag(newTag);
+		sceneGuiObjects[newTag] = guiObject_;
+	}
+	else if (sceneGameObjects.find(tag_) == sceneGameObjects.end()) //Tag doesn't exist
+	{
+		guiObject_->SetTag(tag_);
+		sceneGuiObjects[tag_] = guiObject_;
+	}
+	else
+	{
+		Debugger::Error("Trying to add new object with a tag (" + tag_ + ") that already exists ", "SceneGraph.cpp", __LINE__);
+
+		std::string newTag = "Gameobject " + std::to_string(sceneGameObjects.size() + 1);
+		guiObject_->SetTag(newTag);
+		sceneGuiObjects[newTag] = guiObject_;
+	}
+
+}
 GameObject* SceneGraph::GetGameObject(std::string tag_)
 {
 	if (sceneGameObjects.find(tag_) != sceneGameObjects.end()) //Check to see if we can find the tag
@@ -121,36 +148,32 @@ void SceneGraph::Render(Camera* camera_)
 		it++;
 
 	}
-	//t = 0;
-		/*
-		//We're calling render for the models not the gameobjects to prevent models from being rendered twice as we moved the code to gameobject - model instancem module
-			std::map<GLuint, std::vector<Model*>>::iterator it = sceneModels.begin();
+}
 
-	while (it != sceneModels.end())
+void SceneGraph::Draw(Camera* camera_)
+{
+	std::map<std::string, GUIObject*>::iterator it = sceneGuiObjects.begin();
+
+	//Disable the depth test
+	glDisable(GL_DEPTH_TEST);
+	//Enable blending
+	glEnable(GL_BLEND);
+	//Make blending function take into account the alpha of the image
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("guiShader");
+	
+	while (it != sceneGuiObjects.end())
 	{
-		for (int i = 0; i < it->second.size(); i++)
-		{
-			for (int j = 0; j < it->second[i]->GetModelInstancesSize(); j++)
-			{
-				if (FrustumCullingHandle::GetInstance()->CheckModelCulling(it->second[i]->GetTransform(j), it->second[0]->GetBoundingBox())) //We do not need the bounding box for each instance as all we use are the min/max verts which do not change
-				{
-					glUseProgram(it->first);
-					it->second[i]->Render(camera_);
-				}
-			}
-		}
+		glUseProgram(shaderProgram);
+		it->second->Draw(camera_); //Draws this gui's instance only
 		it++;
-	}
-		*/
 
-//	for (auto m : sceneModels)
-	//{
-	//	glUseProgram(m.first); //Make sure you're using the correct shader program
-	//	for (auto n : m.second) //Render all the models that use that shader program
-	//	{
-			//n->Render(camera_);
-	//	}
-//	}
+	}
+
+	//Reset the depth test and the blending to get ready to render 3D objects again
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+
 }
 
 SceneGraph* SceneGraph::GetInstance()

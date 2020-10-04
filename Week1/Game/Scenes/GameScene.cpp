@@ -1,6 +1,8 @@
 #include "../../Engine/Math/CollisionHandler.h"
 #include "GameScene.h"
 #include "../../Engine/Rendering/3D/Components/PhysicsComponent.h"
+#include "../../Engine/Rendering/GUI/GUIObject.h"
+#include "../../Engine/Rendering/GUI/Components/GUIImageComponent.h"
 
 GameScene::GameScene(): Scene()
 {
@@ -41,6 +43,15 @@ GameScene:: ~GameScene()
 	 SceneGraph::GetInstance()->AddGameObject(appleObj2, "apple2");
 
 
+	 GUIObject* guiObj = new GUIObject(glm::vec2(0.0f, 0.0f));
+	 guiObj->AddComponent<GUIImageComponent*>(new GUIImageComponent());
+	 GUIImageComponent* imageComp = guiObj->GetComponent<GUIImageComponent*>();
+	 if (imageComp)
+	 {
+		 imageComp->OnCreate("BarYellow");
+	 }
+
+	 SceneGraph::GetInstance()->AddGUIObject(guiObj,"barYellow1");
 
 	 //The OpenGL will color the corners and will interpolate the color in between the corners. This is because we only told it what the corners are colored as.
 	 return true;
@@ -53,4 +64,9 @@ GameScene:: ~GameScene()
  {
 	 //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	 SceneGraph::GetInstance()->Render(CoreEngine::GetInstance()->GetCamera());
+ }
+
+ void GameScene::Draw()
+ {
+	 SceneGraph::GetInstance()->Draw(CoreEngine::GetInstance()->GetCamera());
  }
