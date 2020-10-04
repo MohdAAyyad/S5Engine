@@ -69,9 +69,9 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 												"Engine/Shaders/VertexShader.glsl",
 												"Engine/Shaders/FragmentShader.glsl");
 
-	// make a new shader program for handling sprites
-	ShaderHandler::GetInstance()->CreateProgram("spriteShader", 
-												"Engine/Shaders/SpriteVertShader.glsl", 
+
+	ShaderHandler::GetInstance()->CreateProgram("guiShader",
+												"Engine/Shaders/SpriteVertShader.glsl",
 												"Engine/Shaders/SpriteFragShader.glsl");
 
 	if (gameInterface)
@@ -101,6 +101,7 @@ void CoreEngine::Run()
 			gameInterface->Update(timer.GetDeltaTime());
 		}
 		Render();
+		Draw();
 		SDL_Delay(timer.GetSleepTime(fps));
 	}
 
@@ -133,7 +134,7 @@ void CoreEngine::Update(const float deltaTime_)
 void CoreEngine::Render()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clear any artifact windows //This tells OpenGl which buffers to clear on every Render call
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clear any artifact windows //This tells OpenGl which buffers to clear on every Render call	
 	//Render Game
 	if (gameInterface)
 	{
@@ -144,6 +145,14 @@ void CoreEngine::Render()
 
 	//Swap Window
 	SDL_GL_SwapWindow(window->GetWindow());
+}
+
+void CoreEngine::Draw()
+{
+	if (gameInterface)
+	{
+		gameInterface->Draw();
+	}
 }
 
 void CoreEngine::SetGameInterface(GameInterface* gameInterface_)

@@ -49,6 +49,7 @@ public:
 private:
 	void Update(const float deltaTime_);
 	void Render();
+	void Draw();
 
 	//Singleton
 	static std::unique_ptr<CoreEngine> engineInstance; //The instance. Unique pointers are a type of Smart Pointers. Smart Pointers take "ownership" of the object they're pointing to. Unique pointers are used to make sure there's only one instance of the object. unique_ptr objects automatically delete the object they manage (using a deleter) as soon as they themselves are destroyed, or as soon as their value changes either by an assignment operation or by an explicit call to unique_ptr::reset.

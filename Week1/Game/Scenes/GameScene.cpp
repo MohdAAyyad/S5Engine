@@ -1,6 +1,8 @@
 #include "../../Engine/Math/CollisionHandler.h"
 #include "GameScene.h"
 #include "../../Engine/Rendering/3D/Components/PhysicsComponent.h"
+#include "../../Engine/Rendering/GUI/GUIObject.h"
+#include "../../Engine/Rendering/GUI/Components/GUIImageComponent.h"
 
 GameScene::GameScene(): Scene()
 {
@@ -26,25 +28,30 @@ GameScene:: ~GameScene()
 	 SceneGraph::GetInstance()->AddModel(model);
 	 SceneGraph::GetInstance()->AddModel(model2);
 
-	 GameObject* diceObj = new GameObject(model2, glm::vec3(4.0f, -0.5f, 0.0f));
 	 GameObject* appleObj = new GameObject(model, glm::vec3(2.0f, -0.5f, 0.0f));
 	 GameObject* appleObj2 = new GameObject(model, glm::vec3(0.0f, -0.5f, 0.0f));
+	 
 	 appleObj->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
-
 	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
-	 //appleObj->RemoveComponent<PhysicsComponent*>();
-	 //appleObj->GetComponent<PhysicsComponent*>();
-	 //appleObj->RemoveComponent<PhysicsComponent*>();
+	 appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
 
 	 appleObj2->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
+	 appleObj2->AddComponent<PhysicsComponent*>(new PhysicsComponent());
+	 appleObj2->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
 
-	 SceneGraph::GetInstance()->AddGameObject(diceObj);
 	 SceneGraph::GetInstance()->AddGameObject(appleObj, "apple");
 	 SceneGraph::GetInstance()->AddGameObject(appleObj2, "apple2");
 
 
+	 GUIObject* guiObj = new GUIObject(glm::vec2(0.0f, 0.0f));
+	 guiObj->AddComponent<GUIImageComponent*>(new GUIImageComponent());
+	 GUIImageComponent* imageComp = guiObj->GetComponent<GUIImageComponent*>();
+	 if (imageComp)
+	 {
+		 imageComp->OnCreate("BarYellow");
+	 }
+
+	 SceneGraph::GetInstance()->AddGUIObject(guiObj,"barYellow1");
 
 	 //The OpenGL will color the corners and will interpolate the color in between the corners. This is because we only told it what the corners are colored as.
 	 return true;
@@ -61,6 +68,5 @@ GameScene:: ~GameScene()
 
  void GameScene::Draw()
  {
-	 // method used specficially for rendering UI elements
-
+	 SceneGraph::GetInstance()->Draw(CoreEngine::GetInstance()->GetCamera());
  }

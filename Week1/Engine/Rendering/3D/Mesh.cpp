@@ -1,5 +1,5 @@
 #include "Mesh.h"
-
+#include <iostream>
 Mesh::Mesh(SubMesh submesh_,GLuint shaderProgram_) : VAO(0), VBO(0), modelLoc(0), viewLoc(0), projLoc(0), 
 													textureLoc(0), cameraPosLoc(0), lightPosLoc(0),lightAmbientLoc(0),
 													lightDiffuseLoc(0),lightColorLoc(0), matAmbientLoc(0), matDiffuseLoc(0), 
@@ -54,7 +54,9 @@ void Mesh::Render(Camera* camera_, std::vector<glm::mat4> instances_) //Render w
 												      //GL_Triangles: Opengl will take every three points and create triangles out of them
 													  //This draws triangles not traingle strips. Strips save memory since they combine vertrices, however, they're not supported by most formats. OBJ for exampel does not support it.
 													  //Check slides
+
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 
@@ -85,11 +87,14 @@ void Mesh::Render(Camera* camera_, glm::mat4 instance_) //Render a single instan
 													 //GL_Triangles: Opengl will take every three points and create triangles out of them
 													 //This draws triangles not traingle strips. Strips save memory since they combine vertrices, however, they're not supported by most formats. OBJ for exampel does not support it.
 													 //Check slides
+
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void Mesh::GenerateBuffers()
 {
+
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glBindVertexArray(VAO); //Bind the Vertex Array

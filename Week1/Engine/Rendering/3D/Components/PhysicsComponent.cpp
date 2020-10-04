@@ -44,21 +44,20 @@ void PhysicsComponent::Update(float deltaTime_)
 		result = ownerObj->GetPosition() + (velocity * deltaTime_);
 		ownerObj->SetPosition(result);
 
-		//glm::vec3 rotationVec = q * conjugate * norm;
+		//Calculate the rotational magnitude
 		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 		glm::vec3 axisOfRoatation = glm::cross(up, rotationalVelocity);
 		glm::vec3 rotationalMag = glm::normalize(rotationalVelocity) / radius;
 
+		//Calculate the angular velocity vector
 		glm::vec3 angularVelocityVector = rotationalMag * glm::normalize(axisOfRoatation);
 		glm::quat angularVelocityQuat(0, angularVelocityVector);
-
-		//glm::cross(radius, rotationalVelocity) / (glm::length(radius) * glm::length(radius));
-		glm::quat currentRot(0, ownerObj->GetRotation());
-
-		glm::quat result2 = currentRot + (angularVelocityQuat * currentRot * (deltaTime_ / 2));
-		glm::vec3 finalResult = result2 * ownerObj->GetRotation();
-		//owner->GetRotation() + rotationalVelocity * q * (deltaTime_ / 2.0f);
-
-		ownerObj->SetRotation(finalResult);
+		glm::quat currentRot(0, ownerObj->GetRotation()*angle); //Axis * angle
+		//Calculate the new quat
+		glm::quat result2 = currentRot + (angularVelocityQuat * currentRot * (deltaTime_ / 2.0f));
+		//Get the angle from the quat
+		float angle = glm::acos(result2.w) * 2.0f * deltaTime_;
+		//Apply the angle
+		ownerObj->SetAngle(ownerObj->GetAngle() + angle);
 	}
 }

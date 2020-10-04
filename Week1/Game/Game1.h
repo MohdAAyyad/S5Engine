@@ -16,9 +16,9 @@ public:
 					  //In the case of destructor, when the child's is called, the compiler knows to call the parent's as well
 					  
 	virtual void Update(const float deltaTime_); //You don't really need the override keyword here cause these are abstract functions
-	virtual void Render();
-	virtual void Draw();
-	virtual bool OnCreate();
+	virtual void Render() override;
+	virtual bool OnCreate() override;
+	virtual void Draw() override;
 
 private:
 	int currentSceneNum;

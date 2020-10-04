@@ -34,7 +34,6 @@ void Game1::Draw()
 		currentScene->Draw();
 	}
 }
-
 bool Game1::OnCreate()
 {
 	if (CoreEngine::GetInstance()->GetCurrentScene() == 0) 

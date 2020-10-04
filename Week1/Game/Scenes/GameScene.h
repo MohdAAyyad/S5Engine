@@ -11,8 +11,8 @@ public:
 	virtual ~GameScene();
 	virtual bool OnCreate();
 	virtual void Update(const float deltaTime_);
-	virtual void Render();
-	virtual void Draw();
+	virtual void Render() override;
+	virtual void Draw() override;
 };
 
 #endif // !GAMESCENE_H

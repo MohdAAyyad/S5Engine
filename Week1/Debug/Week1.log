@@ -1,2 +1,4 @@
-﻿  GameObject.cpp
-  Week1.vcxproj -> D:\Desktop(Drive Data)\GameEngines5\S5Engine\Debug\Week1.exe
+﻿  SpriteSurface.cpp
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\gui\components\spritesurface.cpp(118): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\c++ projects\semester 5\s5engine\s5engine\week1\engine\rendering\gui\components\spritesurface.cpp(122): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Week1.vcxproj -> D:\C++ Projects\Semester 5\S5Engine\S5Engine\Debug\Week1.exe
