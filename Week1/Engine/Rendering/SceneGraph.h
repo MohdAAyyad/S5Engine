@@ -27,7 +27,7 @@ public:
 	void Render(Camera* camera_);
 	void Draw(Camera* camera_);
 
-	void Draw(Camera* camera_);
+	//void Draw(Camera* camera_);
 
 private:
 
