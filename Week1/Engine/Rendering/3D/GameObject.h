@@ -31,6 +31,9 @@ public:
 	glm::mat4 GetModelInstanceTransform();
 	GLuint GetShaderProgram();
 
+	void SetQuatRotation(glm::quat quat_);
+	glm::quat GetCurrentRotQuat();
+
 	//Components
 	template<typename T>
 	void AddComponent(T comp_)
@@ -111,6 +114,7 @@ private:
 	glm::vec3 rotation;
 	glm::vec3 scale;
 	BoundingBox box;
+	glm::quat rotQuat;
 
 	bool hit;
 

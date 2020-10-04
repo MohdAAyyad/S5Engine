@@ -52,12 +52,13 @@ void PhysicsComponent::Update(float deltaTime_)
 		//Calculate the angular velocity vector
 		glm::vec3 angularVelocityVector = rotationalMag * glm::normalize(axisOfRoatation);
 		glm::quat angularVelocityQuat(0, angularVelocityVector);
-		glm::quat currentRot(0, ownerObj->GetRotation()*angle); //Axis * angle
+		//glm::quat currentRot(0, ownerObj->GetRotation()*angle); //Axis * angle
+		glm::quat currentRot = ownerObj ->GetCurrentRotQuat();
 		//Calculate the new quat
 		glm::quat result2 = currentRot + (angularVelocityQuat * currentRot * (deltaTime_ / 2.0f));
 		//Get the angle from the quat
-		float angle = glm::acos(result2.w) * 2.0f * deltaTime_;
+		//float angle_ = glm::acos(result2.w) * 2.0f * deltaTime_;
 		//Apply the angle
-		ownerObj->SetAngle(ownerObj->GetAngle() + angle);
+		ownerObj->SetQuatRotation(result2);
 	}
 }
