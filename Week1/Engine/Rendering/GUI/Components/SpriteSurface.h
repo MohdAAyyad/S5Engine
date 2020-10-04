@@ -37,6 +37,7 @@ private:
 	GLuint projLoc;
 	GLuint tintLoc;
 	GLuint inputTextureLoc;
+	GLuint textureID;
 
 	void GenerateBuffers();
 	float width;

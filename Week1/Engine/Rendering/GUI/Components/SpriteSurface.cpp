@@ -19,17 +19,22 @@ SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 imageScale_,float
 	imageScale = imageScale_;
 	tintColor = tintColor_;
 	angle = angle_;
+	textureID = 0;
 
 	if (TextureHandler::GetInstance()->GetTexture(imageName_) == 0) //Check if the texture was created first
 	{
-		TextureHandler::GetInstance()->Create2DTexture(imageName_,"./Resources/Textures/BarYellow.png");
+		TextureHandler::GetInstance()->Create2DTexture(imageName_,"./Resources/Textures/" + imageName_ +".png");
 		const Texture* t = TextureHandler::GetInstance()->GetTextureData(imageName_);
 		if (t)
 		{
 			width = t->width;
 			height = t->height;
+			textureID = t->textureID;
+			std::cout << "Tex ID = " << textureID << std::endl;
 		}
 	}
+
+
 
 
 	GenerateBuffers();
@@ -82,6 +87,8 @@ void SpriteSurface::GenerateBuffers()
 
 	//std::cout << "GL uniform ERROR " << glGetError() << std::endl;
 
+	std::cout << "Locs " << modelLoc << "   "<< projLoc << "   "<< tintLoc << "   " << inputTextureLoc<< std::endl;
+
 }
 
 void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
@@ -93,8 +100,7 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 	glActiveTexture(GL_TEXTURE0); //Activate GL_Texture0. There are 32 possible textures
 	
 
-	GLuint currentTexture = TextureHandler::GetInstance()->GetTexture("BarYellow");
-	glBindTexture(GL_TEXTURE_2D, currentTexture);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	glm::mat4 modelMat;
 	modelMat = glm::translate(modelMat, glm::vec3(pos_,0.0f)); //Move the model matrix by the amount of position (matrix * vec3 and returns matrix)

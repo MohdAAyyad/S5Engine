@@ -59,11 +59,32 @@ void Model::UpdateInstance(int index_, glm::vec3 pos_, float angle_, glm::vec3 r
 	}
 }
 
+void Model::UpdateInstance(int index_, glm::vec3 pos_, glm::mat4 quatMat_, glm::vec3 rotation_, glm::vec3 scale_)
+{
+	if (index_ < modelInstance.size() && index_ >= 0)
+	{
+		modelInstance[index_] = GetTransform(pos_, quatMat_, rotation_, scale_);
+	}
+}
+
 glm::mat4 Model::GetTransform(int index_) const
 {
 	if(index_ >= 0 && index_ < modelInstance.size())
 		return modelInstance[index_];
 	return glm::mat4();
+}
+
+glm::mat4 Model::GetTransform(glm::mat4 modelMatrix_,glm::mat4 quatMat) const
+{
+	return (modelMatrix_ * quatMat);
+}
+
+glm::mat4 Model::GetTransform(glm::vec3 pos_, glm::mat4 quatMat_, glm::vec3 rotation_, glm::vec3 scale_) const
+{
+	glm::mat4 model;
+	model = glm::translate(model, pos_) * quatMat_ * glm::scale(model, scale_);
+	//Or do a multiplication translate * rotate * scale ----- Yes we're scaling, rotating, and then positioning
+	return model;
 }
 
 glm::mat4 Model::GetTransform(glm::vec3 pos_, float angle_, glm::vec3 rotation_, glm::vec3 scale_) const

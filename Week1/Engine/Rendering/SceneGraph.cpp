@@ -159,7 +159,8 @@ void SceneGraph::Draw(Camera* camera_)
 	//Enable blending
 	glEnable(GL_BLEND);
 	//Make blending function take into account the alpha of the image
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("guiShader");
 	
 	while (it != sceneGuiObjects.end())

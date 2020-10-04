@@ -1,6 +1,6 @@
 #include "GameObject.h"
 #include "Components/PhysicsComponent.h"
-
+#include <glm/gtx/quaternion.hpp>
 GameObject::GameObject(Model* model_, glm::vec3 position_) : model(nullptr)
 {
 	tag = "";
@@ -15,7 +15,7 @@ GameObject::GameObject(Model* model_, glm::vec3 position_) : model(nullptr)
 		box = model->GetBoundingBox();
 		box.transform = model->GetTransform(modelInstance);
 	}
-
+	rotQuat = glm::quat();
 	hit = false;
 }
 
@@ -56,7 +56,7 @@ void GameObject::Update(float deltaTime_)
 	//angle += 0.3f * deltaTime_;
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
+		model->UpdateInstance(modelInstance, position, glm::toMat4(rotQuat), rotation, scale);
 		box.transform = model->GetTransform(modelInstance);
 	}
 
@@ -101,6 +101,16 @@ void GameObject::SetAngle(float angle_)
 	if (model)
 	{
 		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
+		box.transform = model->GetTransform(modelInstance);
+	}
+}
+
+void GameObject::SetQuatRotation(glm::quat quat_)
+{
+	rotQuat = quat_;
+	if (model)
+	{
+		model->UpdateInstance(modelInstance, position, glm::toMat4(rotQuat), rotation, scale);
 		box.transform = model->GetTransform(modelInstance);
 	}
 }
@@ -163,4 +173,9 @@ glm::mat4 GameObject::GetModelInstanceTransform()
 GLuint GameObject::GetShaderProgram()
 {
 	return model->GetShaderProgram();
+}
+
+glm::quat GameObject::GetCurrentRotQuat()
+{
+	return rotQuat;
 }
