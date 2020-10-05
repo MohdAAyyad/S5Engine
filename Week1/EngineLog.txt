@@ -1,6 +1,6 @@
 [Info]: Created a start scene! in: StartScene.cpp on line: 13
 [Info]: Everything worked! in: CoreEngine.cpp on line: 87
 [Info]: Created GameScene! in: GameScene.cpp on line: 16
-[Info]: Destroying window in: Window.cpp on line: 58
+[Info]: Destroying window in: Window.cpp on line: 57
 [Info]: Destroying CoreEngine instance in: CoreEngine.cpp on line: 43
 [Info]: Destroying CoreEngine instance in: CoreEngine.cpp on line: 43

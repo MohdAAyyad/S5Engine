@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\BarYellow.png" />
+    <Image Include="Resources\Textures\Spidey.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

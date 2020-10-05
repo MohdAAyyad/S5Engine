@@ -23,6 +23,7 @@ Camera::Camera(): position(glm::vec3()), lights(std::vector<LightSource*>())
 	orthographic = glm::ortho(0.0f, CoreEngine::GetInstance()->GetWindowSize().x,
 		           0.0f, CoreEngine::GetInstance()->GetWindowSize().y, -1.0f, 1.0f); //Check slides for pic reference. we're trying to create a perfect cube
 
+	
 	UpdateCameraVector();
 }
 Camera::~Camera()

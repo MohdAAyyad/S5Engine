@@ -48,7 +48,7 @@ GameScene:: ~GameScene()
 	 GUIImageComponent* imageComp = guiObj->GetComponent<GUIImageComponent*>();
 	 if (imageComp)
 	 {
-		 imageComp->OnCreate("BarYellow");
+		 imageComp->OnCreate("Spidey");
 	 }
 
 	 SceneGraph::GetInstance()->AddGUIObject(guiObj,"barYellow1");

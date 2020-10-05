@@ -1,0 +1,5 @@
+[Info]: Created a start scene! in: StartScene.cpp on line: 13
+[Info]: Everything worked! in: CoreEngine.cpp on line: 87
+[Info]: Created GameScene! in: GameScene.cpp on line: 16
+[Error]: Could not open material file path ./Resources/Materials/Apple.mtl in: MaterialLoader on line: 12
+[Error]: Could not open obj file path ./Resources/Models/Apple.obj in: LoadOBJModel on line: 66
