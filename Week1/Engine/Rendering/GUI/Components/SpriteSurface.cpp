@@ -25,7 +25,7 @@ SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 imageScale_,float
 
 	if (TextureHandler::GetInstance()->GetTexture(imageName_) == 0) //Check if the texture was created first
 	{
-		TextureHandler::GetInstance()->Create2DTexture(imageName_, "Resources/Textures/" + imageName_ + ".jpg");
+		TextureHandler::GetInstance()->Create2DTexture(imageName_, "Resources/Textures/" + imageName_ + ".png");
 	}
 	const Texture* t = TextureHandler::GetInstance()->GetTextureData(imageName_);
 	if (t)
@@ -34,10 +34,8 @@ SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 imageScale_,float
 		height = t->height;
 		textureID = t->textureID;
 		std::cout << "Tex ID = " << textureID << std::endl;
+		std::cout << "Width = " << width << "Heigh = " << height << std::endl;
 	}
-
-
-
 
 	GenerateBuffers();
 }
@@ -96,19 +94,20 @@ void SpriteSurface::GenerateBuffers()
 void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 {
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	//std::cout << "DUROW is being called inside the sprite shader " << pos_.x << "   "<< pos_.y << "  "<< std::endl;
-	glUniform1i(inputTextureLoc, 0); //This is unnecessary unless you have more than one texture //0 is the index //If you have multiple textures, you need multiple uniforms and to increment the index by 1 for each one
+	glUniform1i(inputTextureLoc, 0); //This is unnecessary unless you have more than one texture //0 iss the index //If you have multiple textures, you need multiple uniforms and to increment the index by 1 for each one
 	glActiveTexture(GL_TEXTURE0); //Activate GL_Texture0. There are 32 possible textures
 	
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	glm::mat4 modelMat;
+
 	modelMat = glm::translate(modelMat, glm::vec3(pos_,0.0f)); //Move the model matrix by the amount of position (matrix * vec3 and returns matrix)
 	modelMat = glm::rotate(modelMat, angle, glm::vec3(0.0f,1.0f,0.0f));
-	modelMat = glm::scale(modelMat,glm::vec3(imageScale,1.0f));	
+	modelMat = glm::scale(modelMat, glm::vec3(width * imageScale.x, height* imageScale.y, 1.0f));
 
-	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(glm::mat4()));
+
+	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetOrthographic()));
 	glUniform4fv(tintLoc, 1, glm::value_ptr(tintColor));
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMat)); //I have this location of this uniform (modelloc) and I go its location and memory and make its value equal to transform_
 
@@ -117,7 +116,6 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 													 //GL_Triangles: Opengl will take every three points and create triangles out of them
 													 //This draws triangles not traingle strips. Strips save memory since they combine vertrices, however, they're not supported by most formats. OBJ for exampel does not support it.
 	glBindTexture(GL_TEXTURE_2D, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
 

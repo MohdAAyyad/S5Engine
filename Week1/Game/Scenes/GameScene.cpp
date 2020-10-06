@@ -43,12 +43,12 @@ GameScene:: ~GameScene()
 	 SceneGraph::GetInstance()->AddGameObject(appleObj2, "apple2");
 
 
-	 GUIObject* guiObj = new GUIObject(glm::vec2(0.0f, 0.0f));
+	 GUIObject* guiObj = new GUIObject(glm::vec2(400.0f, 300.0f));
 	 guiObj->AddComponent<GUIImageComponent*>(new GUIImageComponent());
 	 GUIImageComponent* imageComp = guiObj->GetComponent<GUIImageComponent*>();
 	 if (imageComp)
 	 {
-		 imageComp->OnCreate("Spidey");
+		 imageComp->OnCreate("BarYellow");
 	 }
 
 	 SceneGraph::GetInstance()->AddGUIObject(guiObj,"barYellow1");
