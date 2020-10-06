@@ -37,7 +37,6 @@ bool Window::OnCreate(std::string name_, int width_, int height_)
 	context = SDL_GL_CreateContext(window);
 	SetPostAttributes(); //Set Depth after context is created
 	GLenum error = glewInit(); 
-
 	if (error != GLEW_OK)
 	{
 		Debugger::Warning("Failed to initialize glew. Quitting program", "Window.cpp", __LINE__);

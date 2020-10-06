@@ -221,5 +221,8 @@
     <Image Include="Resources\Textures\BarYellow.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Textures\Spidey.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

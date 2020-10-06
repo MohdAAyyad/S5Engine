@@ -1,5 +1,5 @@
-#include "../Math/CollisionHandler.h"
 #include "CoreEngine.h"
+#include "../Math/CollisionHandler.h"
 
 std::unique_ptr<CoreEngine> CoreEngine::engineInstance = nullptr; //Initialize a static variable
 
@@ -134,7 +134,8 @@ void CoreEngine::Update(const float deltaTime_)
 void CoreEngine::Render()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clear any artifact windows //This tells OpenGl which buffers to clear on every Render call	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//Clear any artifact windows //This tells OpenGl which buffers to clear on every Render call	
 	//Render Game
 	if (gameInterface)
 	{
@@ -144,7 +145,6 @@ void CoreEngine::Render()
 	//End Render Game
 
 	//Swap Window
-	SDL_GL_SwapWindow(window->GetWindow());
 }
 
 void CoreEngine::Draw()
@@ -153,6 +153,8 @@ void CoreEngine::Draw()
 	{
 		gameInterface->Draw();
 	}
+
+	SDL_GL_SwapWindow(window->GetWindow());
 }
 
 void CoreEngine::SetGameInterface(GameInterface* gameInterface_)

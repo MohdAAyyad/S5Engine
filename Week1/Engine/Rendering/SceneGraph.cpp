@@ -3,6 +3,7 @@
 #include "FrustumCullingHandle.h"
 #include <glew.h>
 #include "../Graphics/ShaderHandler.h"
+#include <iostream>
 
 std::unique_ptr<SceneGraph> SceneGraph::sceneGraphInstance = nullptr;
 std::map<GLuint, std::vector<Model*>> SceneGraph::sceneModels = std::map<GLuint, std::vector<Model*>>();
@@ -153,8 +154,8 @@ void SceneGraph::Render(Camera* camera_)
 void SceneGraph::Draw(Camera* camera_)
 {
 	std::map<std::string, GUIObject*>::iterator it = sceneGuiObjects.begin();
-
 	//Disable the depth test
+	//glDepthMask(GL_FALSE);
 	glDisable(GL_DEPTH_TEST);
 	//Enable blending
 	glEnable(GL_BLEND);
@@ -174,6 +175,7 @@ void SceneGraph::Draw(Camera* camera_)
 	//Reset the depth test and the blending to get ready to render 3D objects again
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
+	//glDepthMask(GL_TRUE);
 
 }
 
