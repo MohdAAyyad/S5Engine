@@ -60,5 +60,8 @@ void PhysicsComponent::Update(float deltaTime_)
 		//float angle_ = glm::acos(result2.w) * 2.0f * deltaTime_;
 		//Apply the angle
 		ownerObj->SetQuatRotation(result2);
+
+
+
 	}
 }
