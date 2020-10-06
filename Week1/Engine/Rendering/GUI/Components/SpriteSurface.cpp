@@ -71,7 +71,6 @@ void SpriteSurface::GenerateBuffers()
 	glEnableVertexAttribArray(1); //This is where the first attrbitue is gonna be (this is an index, doesn't necessarily mean position)
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)offsetof(Vertex2D, textCoords)); //Start at zero, the size of the data, the type of the data point, is the data normalized? false. It's false most of the time, the space between the consecutive vertex attributes, the offset of the first attribute. Position is the first attribute and it's at zero.
 
-
 	//std::cout << "GL second  enable vertex attrib ERROR " << glGetError() << std::endl;
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); //Unbind the buffer
@@ -114,10 +113,8 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexes.size());
 	//The size is not for each element but the whole thing you want to draw
-												 //GL_Triangles: Opengl will take every three points and create triangles out of them
+													 //GL_Triangles: Opengl will take every three points and create triangles out of them
 													 //This draws triangles not traingle strips. Strips save memory since they combine vertrices, however, they're not supported by most formats. OBJ for exampel does not support it.
-
-
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
 }

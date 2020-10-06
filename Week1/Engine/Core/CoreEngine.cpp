@@ -140,7 +140,6 @@ void CoreEngine::Render()
 	if (gameInterface)
 	{
 		gameInterface->Render();
-		gameInterface->Draw();
 	}
 	//End Render Game
 
