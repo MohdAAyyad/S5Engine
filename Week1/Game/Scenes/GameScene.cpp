@@ -49,10 +49,11 @@ GameScene:: ~GameScene()
 	 if (imageComp)
 	 {
 		 imageComp->OnCreate("BarYellow");
+		 imageComp->SetOwner(guiObj);
 	 }
 
 	 SceneGraph::GetInstance()->AddGUIObject(guiObj,"barYellow1");
-
+	 
 	 //The OpenGL will color the corners and will interpolate the color in between the corners. This is because we only told it what the corners are colored as.
 	 return true;
  }

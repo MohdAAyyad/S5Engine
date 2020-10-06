@@ -7,7 +7,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
 #include <string>
-
+#include "../../../Math/BoundingBox.h"
 
 struct Vertex2D
 {
@@ -31,6 +31,7 @@ public:
 
 	int GetWidth();
 	int GetHeight();
+	BoundingBox GetBoundingBox();
 private:
 	GLuint VAO, VBO;
 	GLuint modelLoc;
@@ -47,8 +48,12 @@ private:
 	glm::vec4 tintColor;
 	std::string imageName;
 
+	glm::vec2 FindMinVert();
+	glm::vec2 FindMaxVert();
+	void GenerateBoundingBox();
+
 	std::vector<Vertex2D> vertexes;
 	
-	
+	BoundingBox box;
 };
 #endif // !SPRITESURFACE_H

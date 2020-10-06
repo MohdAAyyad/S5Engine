@@ -38,6 +38,7 @@ SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 imageScale_,float
 	}
 
 	GenerateBuffers();
+	GenerateBoundingBox();
 }
 SpriteSurface::~SpriteSurface()
 {
@@ -89,6 +90,61 @@ void SpriteSurface::GenerateBuffers()
 
 	std::cout << "Locs " << modelLoc << "   "<< projLoc << "   "<< tintLoc << "   " << inputTextureLoc<< std::endl;
 
+
+}
+
+glm::vec2 SpriteSurface::FindMinVert()
+{
+	// start off by setting the min to the first vertex then see if any other vertex is lower
+	glm::vec2 min = vertexes[0].position;
+
+	for (int i = 0; i < vertexes.size(); i++)
+	{
+		//check for the x coord
+		if (vertexes[i].position.x < min.x)
+		{
+			min.x = vertexes[i].position.x;
+		}
+		// check for the y coord
+		if (vertexes[i].position.y < min.y)
+		{
+			min.y = vertexes[i].position.y;
+		}
+	}
+
+	return min;
+}
+
+glm::vec2 SpriteSurface::FindMaxVert()
+{
+	glm::vec2 max = vertexes[0].position;
+
+	for (int i = 0; i < vertexes.size(); i++)
+	{
+		//check for the x coord
+		if (vertexes[i].position.x > max.x)
+		{
+			max.x = vertexes[i].position.x;
+		}
+		// check for the y coord
+		if (vertexes[i].position.y > max.y)
+		{
+			max.y = vertexes[i].position.y;
+		}
+	}
+
+	return max;
+}
+
+void SpriteSurface::GenerateBoundingBox()
+{
+	box.minVert = glm::vec3(FindMinVert(), 0);
+	box.maxVert = glm::vec3(FindMaxVert(), 0);
+}
+
+BoundingBox SpriteSurface::GetBoundingBox()
+{
+	return box;
 }
 
 void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
@@ -117,6 +173,7 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 													 //This draws triangles not traingle strips. Strips save memory since they combine vertrices, however, they're not supported by most formats. OBJ for exampel does not support it.
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
+
 }
 
 int SpriteSurface::GetWidth()

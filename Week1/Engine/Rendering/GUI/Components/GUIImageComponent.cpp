@@ -2,6 +2,10 @@
 #include "../../../Camera/Camera.h"
 #include "../GUIObject.h"
 #include "SpriteSurface.h"
+#include "../../../Math/CollisionHandler.h"
+#include "../../../Event/MouseEventListener.h"
+
+
 
 GUIImageComponent::GUIImageComponent():offset(glm::vec2(0.0f,0.0f))
 {
@@ -27,15 +31,27 @@ void GUIImageComponent::Draw(Camera* camera_, glm::vec2 pos_)
 	if (spriteSurface)
 	{
 		spriteSurface->Draw(camera_, pos_);
+		FindContainingPoint();
 	}
 }
 bool GUIImageComponent::FindContainingPoint()
 {
-	if (spriteSurface)
+	if(spriteSurface && owner)
 	{
 		//TODO
+		// basically it's like AABB collision
+		// generating a hit box turned out to be unnecessary 
+		glm::vec2 mouse = MouseEventListener::GetMouseCurrentPos();
+		// the position is set at the top left, so move the position over to the middle
+		glm::vec2 box = glm::vec2(owner->GetPos().x - spriteSurface->GetWidth() / 2, owner->GetPos().y - spriteSurface->GetHeight() / 2);
 
-		return true;
+
+		if (mouse.x >= box.x && mouse.x <= box.x + spriteSurface->GetWidth()
+			&& mouse.y >= box.y && mouse.y <= box.y + spriteSurface->GetHeight())
+		{
+			printf("Mouse is over UI element! \n");
+			return true;
+		}
 	}
 	return false;
 }
