@@ -1,4 +1,9 @@
-*.vs
+.vscode
+.vs
 *.ipch
 *.suo
+*.opendb
+*.obj
+*.pdb
+*.tlog
 *.db
