@@ -71,7 +71,7 @@ public:
 			compToGet = dynamic_cast<T>(g);
 			if (compToGet)
 			{
-				std::cout << "Got component succesffully" << std::endl;
+				//std::cout << "Got component succesffully" << std::endl;
 				return compToGet;
 			}
 		}

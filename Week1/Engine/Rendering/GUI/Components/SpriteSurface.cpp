@@ -159,7 +159,7 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 	glm::mat4 modelMat;
 
 	modelMat = glm::translate(modelMat, glm::vec3(pos_,0.0f)); //Move the model matrix by the amount of position (matrix * vec3 and returns matrix)
-	modelMat = glm::rotate(modelMat, angle, glm::vec3(0.0f,1.0f,0.0f));
+	modelMat = glm::rotate(modelMat, angle, glm::vec3(0.0f,0.0f,1.0f));
 	modelMat = glm::scale(modelMat, glm::vec3(width * imageScale.x, height* imageScale.y, 1.0f));
 
 

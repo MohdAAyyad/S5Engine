@@ -31,7 +31,7 @@ void GUIImageComponent::Draw(Camera* camera_, glm::vec2 pos_)
 	if (spriteSurface)
 	{
 		spriteSurface->Draw(camera_, pos_);
-		FindContainingPoint();
+		//FindContainingPoint();
 	}
 }
 bool GUIImageComponent::FindContainingPoint()
@@ -42,7 +42,7 @@ bool GUIImageComponent::FindContainingPoint()
 		// basically it's like AABB collision
 		// generating a hit box turned out to be unnecessary 
 		glm::vec2 mouse = MouseEventListener::GetMouseCurrentPos();
-		// the position is set at the top left, so move the position over to the middle
+		// the position is set at the top right, so move the position over to the middle
 		glm::vec2 box = glm::vec2(owner->GetPos().x - spriteSurface->GetWidth() / 2, owner->GetPos().y - spriteSurface->GetHeight() / 2);
 
 

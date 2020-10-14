@@ -14,6 +14,8 @@ public:
 	void OnCreate(class GameObject* gameObject_) override;
 	void SetupScenario(int mass_, glm::vec3 force_, glm::vec3 rotationalVelocity_, glm::vec3 rotationAxis_, float angle_, float radius_);
 	void Update(float deltaTime_) override;
+
+	glm::vec3 GetVelocity();
 	//void OnDestroy() override;
 private:
 	glm::vec3 acceleration;

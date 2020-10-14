@@ -62,3 +62,8 @@ void PhysicsComponent::Update(float deltaTime_)
 		ownerObj->SetQuatRotation(result2);
 	}
 }
+
+glm::vec3 PhysicsComponent::GetVelocity()
+{
+	return velocity;
+}

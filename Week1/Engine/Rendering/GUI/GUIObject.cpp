@@ -35,6 +35,7 @@ void GUIObject::Draw(class Camera* camera_)
 	for (auto c : components)
 	{
 		c->Draw(camera_,pos);
+		FindContainingPoint();
 	}
 }
 bool GUIObject::FindContainingPoint()

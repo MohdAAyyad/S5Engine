@@ -12,6 +12,7 @@
 #include "../Rendering/SceneGraph.h"
 #include "../Camera/Camera.h"
 #include "../Event/EventListener.h"
+#include "../Audio/AudioHandler.h"
 
 class CoreEngine
 {

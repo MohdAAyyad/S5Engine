@@ -19,6 +19,7 @@ void CoreEngine::OnDestroy()
 	TextureHandler::GetInstance()->OnDestroy();
 	SceneGraph::GetInstance()->OnDestroy();
 	CollisionHandler::GetInstance()->OnDestroy();
+	AudioHandler::GetInstance()->OnDestroy();
 
 	if (camera)
 	{
