@@ -25,7 +25,7 @@ void AudioSource::Update(float deltaTime_)
 {
 	if (ownerObj)
 	{
-		AudioHandler::GetInstance()->UpdateChannelPositionVelocity(channelID, ownerObj->GetPosition(), ownerObj->GetComponent<PhysicsComponent*>()->GetVelocity());
+		AudioHandler::GetInstance()->UpdateChannelPositionVelocity(channelID, ownerObj->GetPosition(), glm::vec3(0,0,0));
 
 	}
 }
