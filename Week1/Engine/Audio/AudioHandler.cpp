@@ -35,7 +35,34 @@ void AudioHandler::LoadSound(std::string soundName_, bool loop_, bool is3D_, boo
 	if (GetSound(soundName_) == nullptr)
 	{
 		//sound->setMode();
-		FMOD_MODE mode = FMOD_DEFAULT | loop_ | is3D_ | howToPlay_;
+		FMOD_MODE mode = FMOD_DEFAULT;
+		if (loop_)
+		{
+			mode = mode | FMOD_LOOP_NORMAL;
+		}
+		else
+		{
+			mode = mode | FMOD_LOOP_OFF;
+		}
+
+		if (is3D_)
+		{
+			mode = mode | FMOD_3D;
+		}
+		else
+		{
+			mode = mode | FMOD_2D;
+		}
+
+		if (howToPlay_)
+		{
+			mode = mode | FMOD_CREATESTREAM;
+		}
+		else
+		{
+			mode = mode | FMOD_CREATESAMPLE;
+		}
+		//| loop_ | is3D_ | howToPlay_;
 		
 		FMOD::Sound* sound = nullptr;
 		if (audioSystem)
@@ -132,7 +159,7 @@ bool AudioHandler::Initialise(glm::vec3 position_ = glm::vec3(0,0,0), glm::vec3 
 		return false;
 	}
 	//set up the audio system
-	if (audioSystem->init(5, FMOD_INIT_NORMAL, nullptr) != FMOD_OK)
+	if (audioSystem->init(10, FMOD_INIT_NORMAL | FMOD_3D | FMOD_INIT_3D_RIGHTHANDED, nullptr) != FMOD_OK)
 	{
 		return false;
 	}

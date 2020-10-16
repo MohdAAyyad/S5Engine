@@ -58,7 +58,7 @@ GameScene:: ~GameScene()
 
 	 AudioSource* audio = new AudioSource("Resources/Audio/pixelland.mp3", true, true, true);
 	 appleObj->AddComponent(audio);
-	 appleObj->GetComponent<AudioSource*>()->PlaySound("Resources/Audio/pixelland.mp3", appleObj->GetPosition(), appleObj->GetComponent<PhysicsComponent*>()->GetVelocity(), 0.1f);
+	 appleObj->GetComponent<AudioSource*>()->PlaySound("Resources/Audio/pixelland.mp3", appleObj->GetPosition(), glm::vec3(0,0,0), 0.5f);
 	 
 	 //The OpenGL will color the corners and will interpolate the color in between the corners. This is because we only told it what the corners are colored as.
 	 return true;
@@ -66,6 +66,7 @@ GameScene:: ~GameScene()
  void GameScene::Update(const float deltaTime_)
  {
 	 SceneGraph::GetInstance()->Update(deltaTime_);
+	 AudioHandler::GetInstance()->Update(deltaTime_);
  }
  void GameScene::Render()
  {

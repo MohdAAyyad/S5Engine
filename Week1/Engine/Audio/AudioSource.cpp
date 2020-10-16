@@ -9,7 +9,6 @@ AudioSource::AudioSource(std::string soundName_, bool loop_, bool is3D_, bool ho
 	channelID = -1;
 	sound = soundName_;
 	AudioHandler::GetInstance()->LoadSound(sound, loop_, is3D_, howToPlay_);
-	pos = glm::vec3(0, 0, 0);
 }
 
 AudioSource::~AudioSource()
@@ -23,10 +22,9 @@ void AudioSource::OnCreate(GameObject * obj_)
 
 void AudioSource::Update(float deltaTime_)
 {
-	if (ownerObj)
+	if (ownerObj && channelID != -1)
 	{
 		AudioHandler::GetInstance()->UpdateChannelPositionVelocity(channelID, ownerObj->GetPosition(), glm::vec3(0,0,0));
-
 	}
 }
 

@@ -11,7 +11,6 @@ class AudioSource : public Component
 private:
 	std::string sound;
 	int channelID;
-	glm::vec3 pos;
 public:
 	AudioSource(std::string soundName_, bool loop_, bool is3D_, bool howToPlay_);
 	~AudioSource();
