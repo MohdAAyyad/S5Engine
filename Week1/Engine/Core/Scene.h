@@ -10,6 +10,7 @@ public:
 	virtual void Update(const float deltaTime_) = 0;
 	virtual void Render() = 0;
 	virtual void Draw() = 0; //For GUI objects
+	virtual void LateUpdate(const float deltaTime_) = 0;
 
 };
 

@@ -34,6 +34,8 @@ public:
 	void SetQuatRotation(glm::quat quat_);
 	glm::quat GetCurrentRotQuat();
 
+	void ReactToMousePress();
+
 	//Components
 	template<typename T>
 	void AddComponent(T comp_)
@@ -118,9 +120,16 @@ private:
 
 	bool hit;
 
+
 	int modelInstance; //Instead of loading multiple model objects for the multiple gameobjects that use the same model, we're gonna load the model once and have all those gameobjects use the same model, and to differentiate between them, we use an instance tracker
 
 	std::vector<class Component*> components;
+
+public:
+
+	bool lateUpdate;
+	class ParticleEmitter* pm;
+
 };
 
 #endif // !GAMEOBJECT_H

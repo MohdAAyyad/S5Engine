@@ -6,6 +6,7 @@
 CoreEngine* MouseEventListener::engineInstance = nullptr;
 glm::vec2  MouseEventListener::currentMouse = glm::vec2();
 glm::vec2  MouseEventListener::prevMouse = glm::vec2();
+std::vector<GameObject*> MouseEventListener::gameObjects = std::vector<GameObject*>();
 bool MouseEventListener::firstUpdate = true;
 
 MouseEventListener::~MouseEventListener()
@@ -16,6 +17,11 @@ MouseEventListener::~MouseEventListener()
 void MouseEventListener::RegisterEngineObject(CoreEngine* engine_)
 {
 	engineInstance = engine_;
+}
+
+void MouseEventListener::RegisterGameObject(GameObject* obj_)
+{
+	gameObjects.push_back(obj_);
 }
 void MouseEventListener::Update(SDL_Event e_)
 {
@@ -45,12 +51,19 @@ void MouseEventListener::NotifyOfMousePressed(int buttonType_)
 	{
 		engineInstance->NotifyOfMousePressed(currentMouse);
 	}
+
+
 }
 void MouseEventListener::NotifyOfMouseReleased(int buttonType_)
 {
 	if (engineInstance)
 	{
 		engineInstance->NotifyOfMouseReleased(currentMouse,buttonType_);
+	}
+
+	for (auto o : gameObjects)
+	{
+		o->ReactToMousePress();
 	}
 }
 void MouseEventListener::NotifyOfMouseMove()
@@ -98,4 +111,10 @@ void MouseEventListener::UpdateMousePosition()
 		currentMouse = tmp;
 	}
 
+}
+
+void MouseEventListener::ClearGameObjects()
+{
+	if (gameObjects.size() > 0)
+		gameObjects.clear();
 }

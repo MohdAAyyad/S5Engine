@@ -130,7 +130,10 @@ void SceneGraph::Update(const float deltaTime_)
 {
 	for (auto m : sceneGameObjects)
 	{
-		m.second->Update(deltaTime_);
+		if (!m.second->lateUpdate)
+			m.second->Update(deltaTime_);
+		else
+			lateObjects.push_back(m.second);
 	}
 }
 void SceneGraph::Render(Camera* camera_)
@@ -149,6 +152,12 @@ void SceneGraph::Render(Camera* camera_)
 		it++;
 
 	}
+}
+
+void SceneGraph::LateUpdate(const float deltaTime_)
+{
+	for (auto l : lateObjects)
+		l->Update(deltaTime_);
 }
 
 void SceneGraph::Draw(Camera* camera_)

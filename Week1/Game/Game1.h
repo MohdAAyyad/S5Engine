@@ -19,6 +19,7 @@ public:
 	virtual void Render() override;
 	virtual bool OnCreate() override;
 	virtual void Draw() override;
+	virtual void LateUpdate(const float deltaTime_);
 
 private:
 	int currentSceneNum;

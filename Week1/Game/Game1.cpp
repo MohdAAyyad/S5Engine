@@ -18,6 +18,11 @@ void Game1::Update(const float deltaTime_)
 
 	currentScene->Update(deltaTime_);
 }
+
+void Game1::LateUpdate(const float deltaTime_)
+{
+	currentScene->LateUpdate(deltaTime_);
+}
 void Game1::Render()
 {
 	if (currentScene)

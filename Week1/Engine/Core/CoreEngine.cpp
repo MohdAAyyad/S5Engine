@@ -75,6 +75,10 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 												"Engine/Shaders/SpriteVertShader.glsl",
 												"Engine/Shaders/SpriteFragShader.glsl");
 
+	ShaderHandler::GetInstance()->CreateProgram("particlesShader",
+												"Engine/Shaders/ParticleVertShader.glsl",
+												"Engine/Shaders/ParticleFragShader.glsl");
+
 	if (gameInterface)
 	{
 		if (!gameInterface->OnCreate())
@@ -102,6 +106,7 @@ void CoreEngine::Run()
 			gameInterface->Update(timer.GetDeltaTime());
 		}
 		Render();
+		gameInterface->LateUpdate(timer.GetDeltaTime());
 		Draw();
 		SDL_Delay(timer.GetSleepTime(fps));
 	}
@@ -111,7 +116,6 @@ void CoreEngine::Run()
 		OnDestroy();
 	}
 }
-
 bool CoreEngine::GetIsRunning() const
 {
 	return isRunning;
@@ -134,7 +138,7 @@ void CoreEngine::Update(const float deltaTime_)
 
 void CoreEngine::Render()
 {
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//Clear any artifact windows //This tells OpenGl which buffers to clear on every Render call	
 	//Render Game

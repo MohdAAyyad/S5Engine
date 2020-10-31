@@ -12,6 +12,7 @@ public:
 	virtual void Update(const float deltaTime_);
 	virtual void Render();
 	virtual void Draw() override;
+	virtual void LateUpdate(const float deltaTime_) override;
 
 };
 
