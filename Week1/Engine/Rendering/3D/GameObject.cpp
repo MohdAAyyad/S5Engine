@@ -1,6 +1,9 @@
 #include "GameObject.h"
 #include "Components/PhysicsComponent.h"
 #include <glm/gtx/quaternion.hpp>
+#include "../../FX/ParticleEmitter.h"
+#include "../../Event/MouseEventListener.h"
+
 GameObject::GameObject(Model* model_, glm::vec3 position_) : model(nullptr)
 {
 	tag = "";
@@ -17,6 +20,7 @@ GameObject::GameObject(Model* model_, glm::vec3 position_) : model(nullptr)
 	}
 	rotQuat = glm::quat();
 	hit = false;
+	lateUpdate = false;
 }
 
 GameObject::~GameObject()
@@ -64,6 +68,14 @@ void GameObject::Update(float deltaTime_)
 	for (Component* t : components)
 	{
 		t->Update(deltaTime_);
+	}
+}
+
+void GameObject::ReactToMousePress()
+{
+	if (pm)
+	{
+		pm->CreateMoreParticlesPos();
 	}
 }
 

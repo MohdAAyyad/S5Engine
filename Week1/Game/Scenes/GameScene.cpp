@@ -4,6 +4,7 @@
 #include "../../Engine/Rendering/GUI/GUIObject.h"
 #include "../../Engine/Rendering/GUI/Components/GUIImageComponent.h"
 #include "../../Engine/Audio/AudioSource.h"
+#include "../../Engine/FX/ParticleEmitter.h"
 
 GameScene::GameScene(): Scene()
 {
@@ -40,6 +41,11 @@ GameScene:: ~GameScene()
 	 appleObj2->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
 	 appleObj2->AddComponent<PhysicsComponent*>(new PhysicsComponent());
 	 appleObj2->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
+	 appleObj2->AddComponent<ParticleEmitter*>(new ParticleEmitter(50, "BarWhite", "particlesShader"));
+	 appleObj2->lateUpdate = true;
+	 appleObj2->pm = appleObj2->GetComponent<ParticleEmitter*>();
+
+	 MouseEventListener::RegisterGameObject(appleObj2);
 
 	 SceneGraph::GetInstance()->AddGameObject(appleObj, "apple");
 	 SceneGraph::GetInstance()->AddGameObject(appleObj2, "apple2");
@@ -67,6 +73,11 @@ GameScene:: ~GameScene()
  {
 	 SceneGraph::GetInstance()->Update(deltaTime_);
 	 AudioHandler::GetInstance()->Update(deltaTime_);
+ }
+
+ void GameScene::LateUpdate(const float deltaTime_)
+ {
+	 SceneGraph::GetInstance()->LateUpdate(deltaTime_);
  }
  void GameScene::Render()
  {

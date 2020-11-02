@@ -51,42 +51,30 @@ void SpriteSurface::GenerateBuffers()
 {
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO); //Bind the Vertex Array
-	//std::cout << "GL vertext array bind bind ERROR " << glGetError() << std::endl;
 	glGenBuffers(1, &VBO);
-
-	//std::cout << "GL array gen buffer bind ERROR " << glGetError() << std::endl;
 	glBindBuffer(GL_ARRAY_BUFFER, VBO); //Bind the data buffer
-
-	//std::cout << "GL array buffer bind ERROR " << glGetError() << std::endl;
 
 	glBufferData(GL_ARRAY_BUFFER, vertexes.size() * sizeof(Vertex2D),
 		&vertexes[0], GL_STATIC_DRAW); //We will pass a buffer, the size of the data is the size of the vector multiplied by the size of the Vertex, where in memory this data starts, GL_STATIC_DRAW: data will not change throughout the frame. The opposite of this is GL_DYNAMIC_DRAW i.e. data will change throguh the frame
 
-	//std::cout << "GL ERROR " << glGetError() << std::endl;
-
 	glEnableVertexAttribArray(0); //This is where the first attrbitue is gonna be (this is an index, doesn't necessarily mean position)
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)0); //Start at zero, the size of the data, the type of the data point, is the data normalized? false. It's false most of the time, the space between the consecutive vertex attributes, the offset of the first attribute. Position is the first attribute and it's at zero.
 
-	//std::cout << "GL first enable vertex attrib ERROR " << glGetError() << std::endl;
 
 	glEnableVertexAttribArray(1); //This is where the first attrbitue is gonna be (this is an index, doesn't necessarily mean position)
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)offsetof(Vertex2D, textCoords)); //Start at zero, the size of the data, the type of the data point, is the data normalized? false. It's false most of the time, the space between the consecutive vertex attributes, the offset of the first attribute. Position is the first attribute and it's at zero.
 
-	//std::cout << "GL second  enable vertex attrib ERROR " << glGetError() << std::endl;
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); //Unbind the buffer
 	glBindVertexArray(0); //Unbind the Vertex Array
 
 	GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("guiShader");
 
-	//std::cout << "Shader program is " << shaderProgram << std::endl;
 
 	modelLoc = glGetUniformLocation(shaderProgram, "model");
 	projLoc = glGetUniformLocation(shaderProgram, "proj");
 	tintLoc = glGetUniformLocation(shaderProgram, "tintColour");
 	inputTextureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
-
-	//std::cout << "GL uniform ERROR " << glGetError() << std::endl;
 
 	std::cout << "Locs " << modelLoc << "   "<< projLoc << "   "<< tintLoc << "   " << inputTextureLoc<< std::endl;
 

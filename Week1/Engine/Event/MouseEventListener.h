@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <glm/glm.hpp>
+#include <vector>
 
 class CoreEngine;
 class MouseEventListener
@@ -19,6 +20,7 @@ public:
 
 
 	static void RegisterEngineObject(CoreEngine* engine_); //The listener/observer design pattern requires to register the engine. It's not needed in our case as we have a core engine singleton, but what the hell
+	static void RegisterGameObject(class GameObject* engine_);
 	static void Update(SDL_Event e_);
 
 	static void NotifyOfMousePressed(int buttonType_); //buttonType_ will be populated by SDL
@@ -29,12 +31,15 @@ public:
 	static glm::vec2 GetMousePrevPos();
 	static glm::vec2 GetMouseCurrentPos();
 	static glm::vec2 GetMouseOffset(); //Current - previous
+	static void ClearGameObjects();
 
 private:
 	static CoreEngine* engineInstance;
 	static glm::vec2 currentMouse, prevMouse;
 	static bool firstUpdate; //If it's the first time the mouse has moved, its prev and current pos are the same
 	static void UpdateMousePosition();
+
+	static std::vector<GameObject*> gameObjects;
 };
 
 #endif // !MOUSEEVENTLISTENER_H

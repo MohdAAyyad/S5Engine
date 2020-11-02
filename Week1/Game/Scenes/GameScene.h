@@ -13,6 +13,7 @@ public:
 	virtual void Update(const float deltaTime_);
 	virtual void Render() override;
 	virtual void Draw() override;
+	virtual void LateUpdate(const float deltaTime_) override;
 };
 
 #endif // !GAMESCENE_H

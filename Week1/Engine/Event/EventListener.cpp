@@ -1,5 +1,6 @@
 #include "EventListener.h"
 #include "../Core/CoreEngine.h"
+#include "MouseEventListener.h"
 
 EventListener::~EventListener() 
 {
@@ -14,6 +15,7 @@ void EventListener::Update()
 		switch (sdlEvent.type)
 		{
 		case SDL_QUIT:
+			MouseEventListener::ClearGameObjects();
 			CoreEngine::GetInstance()->Exit();
 		case SDL_MOUSEBUTTONDOWN:
 		case SDL_MOUSEBUTTONUP:

@@ -27,3 +27,7 @@ void StartScene::Draw()
 {
 
 }
+void StartScene::LateUpdate(const float deltaTime_)
+{
+
+}

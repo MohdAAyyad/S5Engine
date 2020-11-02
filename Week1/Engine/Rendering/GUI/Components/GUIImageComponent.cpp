@@ -49,7 +49,7 @@ bool GUIImageComponent::FindContainingPoint()
 		if (mouse.x >= box.x && mouse.x <= box.x + spriteSurface->GetWidth()
 			&& mouse.y >= box.y && mouse.y <= box.y + spriteSurface->GetHeight())
 		{
-			printf("Mouse is over UI element! \n");
+			//printf("Mouse is over UI element! \n");
 			return true;
 		}
 	}

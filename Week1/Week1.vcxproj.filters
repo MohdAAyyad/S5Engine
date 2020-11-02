@@ -108,6 +108,15 @@
     <ClCompile Include="Engine\Audio\AudioSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\FX\Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FX\ParticleEmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\Randomizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Window.h">
@@ -218,6 +227,15 @@
     <ClInclude Include="Engine\Audio\AudioSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\FX\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FX\ParticleEmitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Randomizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Shaders\ColorFragmentShader.glsl" />
@@ -228,12 +246,17 @@
     <None Include="Engine\Shaders\FragmentShader.glsl" />
     <None Include="Engine\Shaders\SpriteFragShader.glsl" />
     <None Include="Engine\Shaders\SpriteVertShader.glsl" />
+    <None Include="Engine\Shaders\ParticleVertShader.glsl" />
+    <None Include="Engine\Shaders\ParticleFragShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\BarYellow.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Textures\Spidey.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Textures\BarWhite.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
