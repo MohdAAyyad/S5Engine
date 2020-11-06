@@ -176,11 +176,14 @@
     <ClCompile Include="Engine\Rendering\GUI\Components\SpriteSurface.cpp" />
     <ClCompile Include="Engine\FX\Particle.cpp" />
     <ClCompile Include="Engine\FX\ParticleEmitter.cpp" />
+    <ClCompile Include="Engine\Rendering\OpenGLRenderer.cpp" />
+    <ClCompile Include="Engine\Rendering\VulkanRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Audio\AudioSource.h" />
     <ClInclude Include="Engine\Audio\AudioHandler.h" />
     <ClInclude Include="Engine\Core\Randomizer.h" />
+    <ClInclude Include="Engine\FX\ParticleBase.h" />
     <ClInclude Include="Engine\Math\CollisionHandler.h" />
     <ClInclude Include="Engine\Math\CollisionDetection.h" />
     <ClInclude Include="Engine\Camera\Camera.h" />
@@ -197,6 +200,9 @@
     <ClInclude Include="Engine\Event\EventListener.h" />
     <ClInclude Include="Engine\Rendering\FrustumCullingHandle.h" />
     <ClInclude Include="Engine\Rendering\GUI\Components\GUIComponent.h" />
+    <ClInclude Include="Engine\Rendering\3D\MeshBase.h" />
+    <ClInclude Include="Engine\Rendering\GUI\Components\SpriteSurfaceBase.h" />
+    <ClInclude Include="Engine\Rendering\Renderer.h" />
     <ClInclude Include="Game\Scenes\GameScene.h" />
     <ClInclude Include="Game\Game1.h" />
     <ClInclude Include="Game\Scenes\StartScene.h" />
@@ -217,6 +223,8 @@
     <ClInclude Include="Engine\Rendering\GUI\Components\GUIImageComponent.h" />
     <ClInclude Include="Engine\FX\Particle.h" />
     <ClInclude Include="Engine\FX\ParticleEmitter.h" />
+    <ClInclude Include="Engine\Rendering\OpenGLRenderer.h" />
+    <ClInclude Include="Engine\Rendering\VulkanRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Shaders\ColorFragmentShader.glsl" />

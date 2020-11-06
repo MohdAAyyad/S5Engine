@@ -12,35 +12,41 @@ using namespace MATH;
 
 ParticleEmitter::ParticleEmitter(int num_, std::string tex_, std::string shader_)
 {
-	if (TextureHandler::GetInstance()->GetTexture(tex_) == 0) //Check if the texture was created first
-	{
-		TextureHandler::GetInstance()->Create2DTexture(tex_, "Resources/Textures/" + tex_ + ".png");		
-	}
-	textureID = TextureHandler::GetInstance()->GetTexture(tex_);
-	shaderProgram = ShaderHandler::GetInstance()->GetShader(shader_);
+
+	rendType = CoreEngine::GetInstance()->GetRendType();
 
 	glm::vec3 pos_, vel_, color_;
 	float life, size_;
 
-	if (textureID != 0 && shaderProgram != 0)
+	if (rendType == RendererType::OPENGL)
 	{
-		//particles.reserve(num_);
-		numOfPartilces = num_;
-		for (int i = 0; i < num_; i++)
+		if (TextureHandler::GetInstance()->GetTexture(tex_) == 0) //Check if the texture was created first
 		{
-			GenerateRandomValues(pos_, vel_, color_, life, size_);
-			Particle* part = new Particle(this, shaderProgram, textureID, pos_, vel_, color_, life, size_);
-			particles.push_back(part);
-
-			//Sleep(100.0f);
-			
+			TextureHandler::GetInstance()->Create2DTextureGL(tex_, "Resources/Textures/" + tex_ + ".png");
 		}
-	}
-	else
-	{
-		Debugger::Error("Couldn't create particles", "ParticleEmitter.cpp", __LINE__);
-	}
+		textureID = TextureHandler::GetInstance()->GetTexture(tex_);
+		shaderProgram = ShaderHandler::GetInstance()->GetShader(shader_);
 
+		if (textureID != 0 && shaderProgram != 0)
+		{
+			//particles.reserve(num_);
+			numOfPartilces = num_;
+			for (int i = 0; i < num_; i++)
+			{
+				GenerateRandomValues(pos_, vel_, color_, life, size_);
+				Particle* part = new Particle(this, shaderProgram, textureID, pos_, vel_, color_, life, size_);
+				particles.push_back(part);
+
+				//Sleep(100.0f);
+
+			}
+		}
+		else
+		{
+			Debugger::Error("Couldn't create particles", "ParticleEmitter.cpp", __LINE__);
+		}
+
+	}
 }
 
 ParticleEmitter::~ParticleEmitter()
@@ -70,8 +76,11 @@ void ParticleEmitter::CreateMoreParticlesPos()
 	if (textureID != 0 && shaderProgram != 0)
 	{
 		GenerateRandomValues(pos_, vel_, color_, life, size_);
-		Particle* part = new Particle(this, shaderProgram, textureID, pos_, vel_, color_, life, size_);
-		particles.push_back(part);
+		if (rendType == RendererType::OPENGL)
+		{
+			Particle* part = new Particle(this, shaderProgram, textureID, pos_, vel_, color_, life, size_);
+			particles.push_back(part);
+		}
 	}
 	else
 	{
@@ -118,7 +127,7 @@ void ParticleEmitter::GenerateRandomValues(glm::vec3& pos_, glm::vec3& vel_, glm
 
 }
 
-void ParticleEmitter::RemoveParticle(Particle* part_)
+void ParticleEmitter::RemoveParticle(ParticleBase* part_)
 {
 	int index_ = -1;
 	for (int i = 0; i < particles.size(); i++)

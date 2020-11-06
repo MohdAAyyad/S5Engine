@@ -183,20 +183,25 @@ void AudioHandler::Update(float deltaTime_)
 
 void AudioHandler::OnDestroy()
 {
-	for (auto a : sounds)
+	if (sounds.size() > 0)
 	{
-		// loop through all the pointers in the map and delete the sounds
-		a.second->release();
+		for (auto a : sounds)
+		{
+			// loop through all the pointers in the map and delete the sounds
+			a.second->release();
+		}
+		// clear the rest of the map
+		sounds.clear();
 	}
-	// clear the rest of the map
-	sounds.clear();
 
-	for (auto c : chanels)
+	if (chanels.size() > 0)
 	{
-		c.second->stop();
+		for (auto c : chanels)
+		{
+			c.second->stop();
+		}
+		chanels.clear();
 	}
-	chanels.clear();
-
 
 	// finally get rid of the system
 	audioSystem->release();

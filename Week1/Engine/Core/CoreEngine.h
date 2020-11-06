@@ -13,6 +13,7 @@
 #include "../Camera/Camera.h"
 #include "../Event/EventListener.h"
 #include "../Audio/AudioHandler.h"
+#include "../Rendering/Renderer.h"
 
 class CoreEngine
 {
@@ -47,6 +48,11 @@ public:
 	void NotifyOfMouseMove(glm::vec2 mouse_);
 	void NotifyOfMouseScroll(int y_);
 
+	Renderer* GetRenderer();
+	RendererType GetRendType();
+	void SetRendType(RendererType type_);
+	Window* GetWindow() const;
+
 private:
 	void Update(const float deltaTime_);
 	void Render();
@@ -76,6 +82,9 @@ private:
 
 	//Camera
 	Camera* camera;
+
+	Renderer* renderer;
+	RendererType rendType;
 };
 
 #endif

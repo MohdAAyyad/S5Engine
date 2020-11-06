@@ -74,7 +74,7 @@ GLuint MaterialLoader::LoadTexture(std::string fileName_)
 
 	if (currentTexture == 0) //Texture does not exist
 	{
-		TextureHandler::GetInstance()->Create2DTexture(fileName_, "./Resources/Textures/" + fileName_ + ".JPG");
+		TextureHandler::GetInstance()->Create2DTextureGL(fileName_, "./Resources/Textures/" + fileName_ + ".JPG");
 		currentTexture = TextureHandler::GetInstance()->GetTexture(fileName_);
 	}
 

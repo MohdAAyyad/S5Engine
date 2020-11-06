@@ -29,7 +29,7 @@ public:
 	TextureHandler& operator=(const TextureHandler&) = delete; //Disable operator = for copy and move
 	TextureHandler& operator=(TextureHandler&&) = delete;
 
-	void Create2DTexture(const std::string& textureName_, const std::string textureFilePath_);
+	void Create2DTextureGL(const std::string& textureName_, const std::string textureFilePath_);
 
 	static const GLuint GetTexture(const std::string textureName_);
 	static const Texture* GetTextureData(const std::string textureName_);

@@ -3,6 +3,7 @@
 
 int main(int argc, char* argv[])
 {
+	CoreEngine::GetInstance()->SetRendType(RendererType::OPENGL);
 	CoreEngine::GetInstance()->SetGameInterface(new Game1);
 	if (!CoreEngine::GetInstance()->OnCreate("Week 1", 800, 600))
 	{

@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <string>
 #include "LoadOBJModel.h"
+#include "../Renderer.h"
 
 class Model
 {
@@ -13,7 +14,7 @@ public:
 	~Model();
 	void Render(Camera* camera_);
 	void RenderInstance(Camera* camera_, int index_);
-	void AddMesh(Mesh* mesh); //This helps us independantly load the meshes that compose a model. That's why we pass in vertex lists to Mesh, but a mesh pointer to Model. This way the model is created of a series of meshes rather than getting to know all the vertices
+	void AddMesh(MeshBase* mesh); //This helps us independantly load the meshes that compose a model. That's why we pass in vertex lists to Mesh, but a mesh pointer to Model. This way the model is created of a series of meshes rather than getting to know all the vertices
 
 
 
@@ -26,7 +27,7 @@ public:
 	GLuint GetShaderProgram() const;
 	int GetModelInstancesSize();
 private:
-	std::vector<Mesh*> subMeshes; //The meshes that compose the model
+	std::vector<MeshBase*> subMeshes; //The meshes that compose the model
 	std::vector<glm::mat4> modelInstance; //Holds the transform matrices of all the instantiated models
 	glm::mat4 GetTransform(glm::vec3 pos_, float angle_, glm::vec3 rotation_, glm::vec3 scale_) const;
 	glm::mat4 GetTransform(glm::mat4 modelMatrix_, glm::mat4 quatMat) const;
@@ -37,6 +38,7 @@ private:
 	LoadOBJModel* objLoader;
 
 	BoundingBox box;
+	RendererType rendType;
 
 };
 
