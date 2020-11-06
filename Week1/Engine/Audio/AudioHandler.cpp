@@ -74,11 +74,6 @@ void AudioHandler::LoadSound(std::string soundName_, bool loop_, bool is3D_, boo
 			}
 		}
 	}
-	else
-	{
-		// it's already been added go home
-		return;
-	}
 
 }
 
