@@ -98,7 +98,7 @@ void CoreEngine::Run()
 		timer.UpdateFrameTicks();
 		EventListener::Update();
 		Update(timer.GetDeltaTime());
-		if (gameInterface)
+		if (gameInterface && rendType == RendererType::OPENGL) //PLACEHOLDER UNTIL WE FIGURE OUT PROPER VERTEX BASED RENDERING IN VULKAN
 		{
 			gameInterface->Update(timer.GetDeltaTime());
 		}
@@ -136,14 +136,19 @@ void CoreEngine::Update(const float deltaTime_)
 void CoreEngine::Render()
 {
 	
-	//Render Game
-	if (gameInterface)
+	if (rendType == RendererType::OPENGL)
 	{
-		gameInterface->Render();
+		if (gameInterface)
+		{
+			gameInterface->Render();
+		}
 	}
-	//End Render Game
+	else if (rendType == RendererType::VULKAN)
+	{
+		//PLACEHOLDER UNTIL WE FIGURE OUT PROPER VERTEX BASED RENDERING IN VULKAN
+		renderer->Render();
+	}
 
-	//Swap Window
 }
 
 void CoreEngine::Draw()

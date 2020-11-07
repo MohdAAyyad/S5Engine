@@ -14,6 +14,7 @@ class Renderer
 {
 public:
 	virtual SDL_Window* CreateWindow(std::string name_, int width_, int height_) = 0;
+	virtual void Render() = 0;
 };
 
 #endif

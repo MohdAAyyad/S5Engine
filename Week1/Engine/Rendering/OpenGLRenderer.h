@@ -10,6 +10,8 @@ public:
 
 	void OnDestroy();
 
+	void Render() override {};
+
 private:
 	SDL_GLContext context;
 
