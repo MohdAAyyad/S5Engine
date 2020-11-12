@@ -3,6 +3,25 @@
 
 int main(int argc, char* argv[])
 {
+	int graphicsFlag = -1;
+
+	std::cout << "Please choose what type of graphics pipeline you wish to use (0 for OpenGL, 1 for Vulkan )" << std::endl;
+
+	while (graphicsFlag != 0 && graphicsFlag != 1)
+	{
+		std::cin >> graphicsFlag;
+
+		if (graphicsFlag != 0 && graphicsFlag != 1)
+		{
+			std::cout << "Incorrect input detected. Please choose what type of graphics pipeline you wish to use (0 for Vulkan, 1 for OpenGL)" << std::endl;
+		}
+		else
+		{
+			CoreEngine::GetInstance()->SetRendType(static_cast<RendererType>(graphicsFlag));
+		}
+	}
+
+	
 	CoreEngine::GetInstance()->SetGameInterface(new Game1);
 	if (!CoreEngine::GetInstance()->OnCreate("Week 1", 800, 600))
 	{

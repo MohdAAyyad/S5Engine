@@ -4,9 +4,7 @@
 #include "../../../Graphics/ShaderHandler.h"
 
 SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 imageScale_,float angle_, glm::vec4 tintColor_)
-			: VAO(0), VBO(0), modelLoc(0), projLoc(0),tintLoc(0), inputTextureLoc(0), 
-			  width(0.0f),height(0.0f), angle(0),imageScale(glm::vec2(1.0f,1.0f)),
-			  tintColor(glm::vec4(1.0f,1.0f,1.0f,1.0f))
+			: VAO(0), VBO(0), modelLoc(0), projLoc(0),tintLoc(0), inputTextureLoc(0)
 {
 	vertexes.push_back(Vertex2D(glm::vec2(-0.5f, 0.5f), glm::vec2(0.0f, 0.0f)));
 	vertexes.push_back(Vertex2D(glm::vec2(0.5f, 0.5f), glm::vec2(1.0f, 0.0f)));
@@ -25,7 +23,7 @@ SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 imageScale_,float
 
 	if (TextureHandler::GetInstance()->GetTexture(imageName_) == 0) //Check if the texture was created first
 	{
-		TextureHandler::GetInstance()->Create2DTexture(imageName_, "Resources/Textures/" + imageName_ + ".png");
+		TextureHandler::GetInstance()->Create2DTextureGL(imageName_, "Resources/Textures/" + imageName_ + ".png");
 	}
 	const Texture* t = TextureHandler::GetInstance()->GetTextureData(imageName_);
 	if (t)
@@ -164,11 +162,11 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 pos_)
 
 }
 
-int SpriteSurface::GetWidth()
+float SpriteSurface::GetWidth()
 {
 	return width;
 }
-int SpriteSurface::GetHeight()
+float SpriteSurface::GetHeight()
 {
 	return height;
 }

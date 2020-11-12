@@ -1,5 +1,6 @@
 #pragma once
 #include "GUIComponent.h"
+
 class GUIImageComponent :public GUIComponent
 {
 
@@ -13,7 +14,7 @@ public:
 	void SetOwner(class GUIObject* owner_) override;
 
 private:
-	class SpriteSurface* spriteSurface;
+	class SpriteSurfaceBase* spriteSurface;
 	glm::vec2 offset;
 };
 

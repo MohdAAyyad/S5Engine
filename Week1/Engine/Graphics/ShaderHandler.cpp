@@ -96,7 +96,7 @@ GLuint  ShaderHandler::CreateShader(GLenum shaderType_, const std::string& sourc
 }
 
 
-void ShaderHandler::CreateProgram(const std::string& shaderName_,
+void ShaderHandler::CreateProgramGL(const std::string& shaderName_,
 	const std::string& vertexShaderFileName_,
 	const std::string& fragmentShaderFileName_)
 {

@@ -25,6 +25,12 @@ void Game1::LateUpdate(const float deltaTime_)
 }
 void Game1::Render()
 {
+	if(CoreEngine::GetInstance()->GetRendType() == RendererType::OPENGL)
+	{ 
+		//Clear any artifact windows //This tells OpenGl which buffers to clear on every Render call
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
 	if (currentScene)
 	{
 		currentScene->Render();
@@ -38,9 +44,38 @@ void Game1::Draw()
 	{
 		currentScene->Draw();
 	}
+
+	if (CoreEngine::GetInstance()->GetRendType() == RendererType::OPENGL)
+	{
+		SDL_GL_SwapWindow(CoreEngine::GetInstance()->GetWindow()->GetWindow());
+	}
 }
 bool Game1::OnCreate()
 {
+	if (CoreEngine::GetInstance()->GetRendType() == RendererType::OPENGL)
+	{
+		ShaderHandler::GetInstance()->CreateProgramGL("colorShader",
+			"Engine/Shaders/ColorVertexShader.glsl",
+			"Engine/Shaders/ColorFragmentShader.glsl");
+
+		ShaderHandler::GetInstance()->CreateProgramGL("basicShader",
+			"Engine/Shaders/VertexShader.glsl",
+			"Engine/Shaders/FragmentShader.glsl");
+
+
+		ShaderHandler::GetInstance()->CreateProgramGL("guiShader",
+			"Engine/Shaders/SpriteVertShader.glsl",
+			"Engine/Shaders/SpriteFragShader.glsl");
+
+		ShaderHandler::GetInstance()->CreateProgramGL("particlesShader",
+			"Engine/Shaders/ParticleVertShader.glsl",
+			"Engine/Shaders/ParticleFragShader.glsl");
+	}
+	else
+	{
+
+	}
+
 	if (CoreEngine::GetInstance()->GetCurrentScene() == 0) 
 	{
 		currentScene = new StartScene();

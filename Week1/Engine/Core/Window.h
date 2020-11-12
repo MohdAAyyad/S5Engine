@@ -13,18 +13,16 @@ class Window
 public:
 	Window();
 	~Window();
-	bool OnCreate(std::string name_, int width_, int height_);
+	bool OnCreate(class Renderer* renderer_,std::string name_, int width_, int height_);
 	void OnDestroy();
 	int GetWidth();
 	int GetHeight();
 	SDL_Window* GetWindow() const;
 
 private:
-	void SetPreAttributes(); //Before the window is created
-	void SetPostAttributes(); //After the window is created
 	int width, height;
 	SDL_Window* window;
-	SDL_GLContext context;
+	Renderer* renderer;
 };
 
 #endif // !WINDOW_H

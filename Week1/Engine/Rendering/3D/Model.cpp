@@ -1,10 +1,11 @@
 #include "Model.h"
-
-Model::Model(const std::string& objFilePath_, const std::string& mtlFilePath_, GLuint shaderProgram_):subMeshes(std::vector<Mesh*>()), shaderProgram(0), modelInstance(std::vector<glm::mat4>())
+#include "../../Core/CoreEngine.h"
+Model::Model(const std::string& objFilePath_, const std::string& mtlFilePath_, GLuint shaderProgram_):subMeshes(std::vector<MeshBase*>()), shaderProgram(0), modelInstance(std::vector<glm::mat4>())
 {
 	subMeshes.reserve(10);
 	modelInstance.reserve(5);
 	shaderProgram = shaderProgram_;
+	rendType = CoreEngine::GetInstance()->GetRendType();
 	objLoader = new LoadOBJModel();
 	objLoader->LoadModel(objFilePath_, mtlFilePath_);
 	this->LoadModel();
@@ -41,7 +42,7 @@ void Model::RenderInstance(Camera* camera_, int index_)
 		m->Render(camera_, modelInstance[index_]);
 	}
 }
-void Model::AddMesh(Mesh* mesh)
+void Model::AddMesh(MeshBase* mesh)
 {
 	subMeshes.push_back(mesh);
 }
@@ -103,7 +104,8 @@ void Model::LoadModel()
 
 	for (int i = 0; i < objLoader->GetSubmeshes().size(); i++)
 	{
-		subMeshes.push_back(new Mesh(objLoader->GetSubmeshes()[i], shaderProgram));
+		if(rendType == RendererType::OPENGL)
+			subMeshes.push_back(new Mesh(objLoader->GetSubmeshes()[i], shaderProgram));
 	}
 	box = objLoader->GetBoundingBox(); //Update the bounding box	
 	delete objLoader; //Objloader takes a lot of memory. Delete it as it won't be needed from here on out

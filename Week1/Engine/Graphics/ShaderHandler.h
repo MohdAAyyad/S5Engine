@@ -19,7 +19,7 @@ public:
 
 	static ShaderHandler* GetInstance();
 
-	void CreateProgram(const std::string& shaderName_, 
+	void CreateProgramGL(const std::string& shaderName_, 
 				       const std::string& vertexShaderFileName_, 
 					   const std::string& fragmentShaderFileName_);
 

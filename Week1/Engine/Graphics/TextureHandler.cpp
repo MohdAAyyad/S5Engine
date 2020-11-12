@@ -30,7 +30,7 @@ void TextureHandler::OnDestroy()
 }
 
 
-void TextureHandler::Create2DTexture(const std::string& textureName_, const std::string textureFilePath_)
+void TextureHandler::Create2DTextureGL(const std::string& textureName_, const std::string textureFilePath_)
 {
 	Texture* t = new Texture();
 	SDL_Surface* surface = nullptr;
