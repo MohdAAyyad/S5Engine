@@ -31,7 +31,7 @@ public:
 	~Mesh();
 	void Render(Camera* camera_, std::vector<glm::mat4> instances_);
 	void Render(Camera* camera_, glm::mat4 instance_);
-
+	SubMesh GetSubMesh();
 private:
 	void GenerateBuffers();
 	SubMesh subMesh;

@@ -2,7 +2,7 @@
 #define COLLISIONDETECTION_H
 
 #include "../Camera/Camera.h"
-
+#include "../Rendering/3D/Mesh.h"
 struct Ray;
 struct BoundingBox;
 class CollisionDetection
@@ -18,6 +18,18 @@ public:
 
 	static Ray ScreenPosToWorldRay(glm::vec2 mouseCoords_, glm::vec2 screenSize_, Camera* camera_);
 	static bool RayObbIntersection(Ray* ray_, BoundingBox* obb_);
+	static bool GJK(class GameObject* gm1_, class GameObject* gm2_);
+	// performs the minkowski difference between two vertex positions
+	// helper function for GJK
+	static glm::vec3 MinkowskiDifference(glm::vec3 v1_, glm::vec3 v2_);
+	static glm::vec3 Support(std::vector<Vertex> v1_, std::vector<Vertex> v2_, glm::vec3 direction_);
+	static glm::vec3 FindFourthPoint(glm::vec3 p1_, glm::vec3 p2_, glm::vec3 p3_, glm::vec3 normal_, std::vector<Vertex> v1_, std::vector<Vertex> v2_);
+	static std::vector<glm::vec3> IsInOrigin(glm::vec3 p1_, glm::vec3 p2_, glm::vec3 p3_, glm::vec3 p4_);
+private:
+
+
+
+	
 };
 
 

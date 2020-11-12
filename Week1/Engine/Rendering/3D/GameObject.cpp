@@ -96,6 +96,11 @@ glm::vec3 GameObject::GetScale() const
 	return scale;
 }
 
+Model* GameObject::GetModel()
+{
+	return model;
+}
+
 void GameObject::SetPosition(glm::vec3 position_)
 {
 	position = position_;

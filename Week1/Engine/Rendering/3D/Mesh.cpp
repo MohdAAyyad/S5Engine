@@ -92,6 +92,11 @@ void Mesh::Render(Camera* camera_, glm::mat4 instance_) //Render a single instan
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+SubMesh Mesh::GetSubMesh()
+{
+	return subMesh;
+}
+
 void Mesh::GenerateBuffers()
 {
 

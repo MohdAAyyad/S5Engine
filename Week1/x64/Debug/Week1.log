@@ -1,11 +1,116 @@
-﻿  CollisionHandler.cpp
-  CollisionDetection.cpp
-  Camera.cpp
-  Debugger.cpp
-  CoreEngine.cpp
-  PhysicsComponent.cpp
-  GameObject.cpp
-  EventListener.cpp
-  FrustumCullingHandle.cpp
-  GameScene.cpp
-  Game1.cpp
+﻿AudioHandler.obj : error LNK2019: unresolved external symbol FMOD_System_Create referenced in function "enum FMOD_RESULT __cdecl FMOD::System_Create(class FMOD::System * *)" (?System_Create@FMOD@@YA?AW4FMOD_RESULT@@PEAPEAVSystem@1@@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::release(void)" (?release@System@FMOD@@QEAA?AW4FMOD_RESULT@@XZ) referenced in function "public: void __cdecl AudioHandler::OnDestroy(void)" (?OnDestroy@AudioHandler@@QEAAXXZ)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::getNumDrivers(int *)" (?getNumDrivers@System@FMOD@@QEAA?AW4FMOD_RESULT@@PEAH@Z) referenced in function "public: bool __cdecl AudioHandler::Initialise(struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>)" (?Initialise@AudioHandler@@QEAA_NU?$tvec3@M$0A@@glm@@000@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::init(int,unsigned int,void *)" (?init@System@FMOD@@QEAA?AW4FMOD_RESULT@@HIPEAX@Z) referenced in function "public: bool __cdecl AudioHandler::Initialise(struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>)" (?Initialise@AudioHandler@@QEAA_NU?$tvec3@M$0A@@glm@@000@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::update(void)" (?update@System@FMOD@@QEAA?AW4FMOD_RESULT@@XZ) referenced in function "public: void __cdecl AudioHandler::Update(float)" (?Update@AudioHandler@@QEAAXM@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::set3DListenerAttributes(int,struct FMOD_VECTOR const *,struct FMOD_VECTOR const *,struct FMOD_VECTOR const *,struct FMOD_VECTOR const *)" (?set3DListenerAttributes@System@FMOD@@QEAA?AW4FMOD_RESULT@@HPEBUFMOD_VECTOR@@000@Z) referenced in function "public: bool __cdecl AudioHandler::Initialise(struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>)" (?Initialise@AudioHandler@@QEAA_NU?$tvec3@M$0A@@glm@@000@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::createSound(char const *,unsigned int,struct FMOD_CREATESOUNDEXINFO *,class FMOD::Sound * *)" (?createSound@System@FMOD@@QEAA?AW4FMOD_RESULT@@PEBDIPEAUFMOD_CREATESOUNDEXINFO@@PEAPEAVSound@2@@Z) referenced in function "private: void __cdecl AudioHandler::LoadSound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)" (?LoadSound@AudioHandler@@AEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N11@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::playSound(class FMOD::Sound *,class FMOD::ChannelGroup *,bool,class FMOD::Channel * *)" (?playSound@System@FMOD@@QEAA?AW4FMOD_RESULT@@PEAVSound@2@PEAVChannelGroup@2@_NPEAPEAVChannel@2@@Z) referenced in function "private: int __cdecl AudioHandler::PlaySound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,float)" (?PlaySound@AudioHandler@@AEAAHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$tvec3@M$0A@@glm@@1M@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::Sound::release(void)" (?release@Sound@FMOD@@QEAA?AW4FMOD_RESULT@@XZ) referenced in function "public: void __cdecl AudioHandler::OnDestroy(void)" (?OnDestroy@AudioHandler@@QEAAXXZ)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::ChannelControl::stop(void)" (?stop@ChannelControl@FMOD@@QEAA?AW4FMOD_RESULT@@XZ) referenced in function "public: void __cdecl AudioHandler::OnDestroy(void)" (?OnDestroy@AudioHandler@@QEAAXXZ)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::ChannelControl::setPaused(bool)" (?setPaused@ChannelControl@FMOD@@QEAA?AW4FMOD_RESULT@@_N@Z) referenced in function "private: int __cdecl AudioHandler::PlaySound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,float)" (?PlaySound@AudioHandler@@AEAAHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$tvec3@M$0A@@glm@@1M@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::ChannelControl::setVolume(float)" (?setVolume@ChannelControl@FMOD@@QEAA?AW4FMOD_RESULT@@M@Z) referenced in function "private: int __cdecl AudioHandler::PlaySound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,float)" (?PlaySound@AudioHandler@@AEAAHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$tvec3@M$0A@@glm@@1M@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::ChannelControl::isPlaying(bool *)" (?isPlaying@ChannelControl@FMOD@@QEAA?AW4FMOD_RESULT@@PEA_N@Z) referenced in function "private: bool __cdecl AudioHandler::IsPlaying(int)" (?IsPlaying@AudioHandler@@AEAA_NH@Z)
+AudioHandler.obj : error LNK2019: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::ChannelControl::set3DAttributes(struct FMOD_VECTOR const *,struct FMOD_VECTOR const *)" (?set3DAttributes@ChannelControl@FMOD@@QEAA?AW4FMOD_RESULT@@PEBUFMOD_VECTOR@@0@Z) referenced in function "private: int __cdecl AudioHandler::PlaySound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec3<float,0>,struct glm::tvec3<float,0>,float)" (?PlaySound@AudioHandler@@AEAAHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$tvec3@M$0A@@glm@@1M@Z)
+CoreEngine.obj : error LNK2019: unresolved external symbol SDL_GL_SwapWindow referenced in function "private: void __cdecl CoreEngine::Draw(void)" (?Draw@CoreEngine@@AEAAXXZ)
+CoreEngine.obj : error LNK2019: unresolved external symbol SDL_WarpMouseInWindow referenced in function "public: bool __cdecl CoreEngine::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@CoreEngine@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+CoreEngine.obj : error LNK2019: unresolved external symbol SDL_Delay referenced in function "public: void __cdecl CoreEngine::Run(void)" (?Run@CoreEngine@@QEAAXXZ)
+CoreEngine.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "private: void __cdecl CoreEngine::OnDestroy(void)" (?OnDestroy@CoreEngine@@AEAAXXZ)
+CoreEngine.obj : error LNK2019: unresolved external symbol __imp_glClear referenced in function "private: void __cdecl CoreEngine::Render(void)" (?Render@CoreEngine@@AEAAXXZ)
+CoreEngine.obj : error LNK2019: unresolved external symbol __imp_glClearColor referenced in function "private: void __cdecl CoreEngine::Render(void)" (?Render@CoreEngine@@AEAAXXZ)
+EventListener.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: static void __cdecl EventListener::Update(void)" (?Update@EventListener@@SAXXZ)
+Window.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Window.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "public: void __cdecl Window::OnDestroy(void)" (?OnDestroy@Window@@QEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol SDL_GL_SetAttribute referenced in function "private: void __cdecl Window::SetPostAttributes(void)" (?SetPostAttributes@Window@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol SDL_GL_CreateContext referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Window.obj : error LNK2019: unresolved external symbol SDL_GL_SetSwapInterval referenced in function "private: void __cdecl Window::SetPreAttributes(void)" (?SetPreAttributes@Window@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol SDL_GL_DeleteContext referenced in function "public: void __cdecl Window::OnDestroy(void)" (?OnDestroy@Window@@QEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Window.obj : error LNK2019: unresolved external symbol __imp_glEnable referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+SceneGraph.obj : error LNK2001: unresolved external symbol __imp_glEnable
+Particle.obj : error LNK2001: unresolved external symbol __imp_glEnable
+Window.obj : error LNK2019: unresolved external symbol __imp_glGetString referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Window.obj : error LNK2019: unresolved external symbol __imp_glViewport referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Window.obj : error LNK2019: unresolved external symbol __imp_glewInit referenced in function "public: bool __cdecl Window::OnCreate(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?OnCreate@Window@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Window.obj : error LNK2001: unresolved external symbol __imp_glewExperimental
+Timer.obj : error LNK2019: unresolved external symbol SDL_GetTicks referenced in function "public: unsigned int __cdecl Timer::GetSleepTime(unsigned int)" (?GetSleepTime@Timer@@QEAAII@Z)
+Mesh.obj : error LNK2019: unresolved external symbol __imp_glBindTexture referenced in function "public: void __cdecl Mesh::Render(class Camera *,struct glm::tmat4x4<float,0>)" (?Render@Mesh@@QEAAXPEAVCamera@@U?$tmat4x4@M$0A@@glm@@@Z)
+TextureHandler.obj : error LNK2001: unresolved external symbol __imp_glBindTexture
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp_glBindTexture
+Particle.obj : error LNK2001: unresolved external symbol __imp_glBindTexture
+Mesh.obj : error LNK2019: unresolved external symbol __imp_glDrawArrays referenced in function "public: void __cdecl Mesh::Render(class Camera *,struct glm::tmat4x4<float,0>)" (?Render@Mesh@@QEAAXPEAVCamera@@U?$tmat4x4@M$0A@@glm@@@Z)
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp_glDrawArrays
+Particle.obj : error LNK2001: unresolved external symbol __imp_glDrawArrays
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewActiveTexture
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewActiveTexture
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewActiveTexture
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewDeleteBuffers
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewDeleteBuffers
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewEnableVertexAttribArray
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewEnableVertexAttribArray
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewGetUniformLocation
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewGetUniformLocation
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewGetUniformLocation
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewUniform1f
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewUniform1f
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewUniform1i
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewUniform1i
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewUniform1i
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewUniform3fv
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewUniform3fv
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewUniformMatrix4fv
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewUniformMatrix4fv
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewUniformMatrix4fv
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewVertexAttribPointer
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewVertexAttribPointer
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewDeleteVertexArrays
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewDeleteVertexArrays
+Mesh.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewAttachShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewCompileShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewCreateProgram
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewCreateShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewDeleteProgram
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewDeleteShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramInfoLog
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramiv
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderInfoLog
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderiv
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewLinkProgram
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewShaderSource
+TextureHandler.obj : error LNK2019: unresolved external symbol __imp_glDeleteTextures referenced in function "public: void __cdecl TextureHandler::OnDestroy(void)" (?OnDestroy@TextureHandler@@QEAAXXZ)
+TextureHandler.obj : error LNK2019: unresolved external symbol __imp_glGenTextures referenced in function "public: void __cdecl TextureHandler::Create2DTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Create2DTexture@TextureHandler@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z)
+TextureHandler.obj : error LNK2019: unresolved external symbol __imp_glTexImage2D referenced in function "public: void __cdecl TextureHandler::Create2DTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Create2DTexture@TextureHandler@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z)
+TextureHandler.obj : error LNK2019: unresolved external symbol __imp_glTexParameteri referenced in function "public: void __cdecl TextureHandler::Create2DTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Create2DTexture@TextureHandler@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z)
+TextureHandler.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: void __cdecl TextureHandler::Create2DTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Create2DTexture@TextureHandler@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z)
+TextureHandler.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: void __cdecl TextureHandler::Create2DTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Create2DTexture@TextureHandler@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z)
+TextureHandler.obj : error LNK2001: unresolved external symbol __imp___glewGenerateMipmap
+MouseEventListener.obj : error LNK2019: unresolved external symbol SDL_GetMouseState referenced in function "private: static void __cdecl MouseEventListener::UpdateMousePosition(void)" (?UpdateMousePosition@MouseEventListener@@CAXXZ)
+SceneGraph.obj : error LNK2019: unresolved external symbol __imp_glBlendFunc referenced in function "public: void __cdecl SceneGraph::Draw(class Camera *)" (?Draw@SceneGraph@@QEAAXPEAVCamera@@@Z)
+Particle.obj : error LNK2001: unresolved external symbol __imp_glBlendFunc
+SceneGraph.obj : error LNK2019: unresolved external symbol __imp_glDisable referenced in function "public: void __cdecl SceneGraph::Draw(class Camera *)" (?Draw@SceneGraph@@QEAAXPEAVCamera@@@Z)
+Particle.obj : error LNK2001: unresolved external symbol __imp_glDisable
+SceneGraph.obj : error LNK2001: unresolved external symbol __imp___glewUseProgram
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewUseProgram
+ParticleEmitter.obj : error LNK2001: unresolved external symbol __imp___glewUseProgram
+SpriteSurface.obj : error LNK2001: unresolved external symbol __imp___glewUniform4fv
+Particle.obj : error LNK2001: unresolved external symbol __imp___glewUniform4fv
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\GameDev\SDL\lib\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\GameDev\SDL\lib\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\GameDev\SDL\lib\SDL2test.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\GameDev\SDL\lib\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\GameDev\OpenGL\lib\glew32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\GameDev\OpenGL\lib\glew32s.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+D:\Desktop(Drive Data)\GameEngines5\S5Engine\x64\Debug\Week1.exe : fatal error LNK1120: 76 unresolved externals

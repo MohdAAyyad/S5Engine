@@ -14,6 +14,9 @@ public:
 	virtual void Render() override;
 	virtual void Draw() override;
 	virtual void LateUpdate(const float deltaTime_) override;
+private:
+	GameObject* apple;
+	GameObject* apple2;
 };
 
 #endif // !GAMESCENE_H

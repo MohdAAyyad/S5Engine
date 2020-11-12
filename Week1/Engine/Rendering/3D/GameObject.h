@@ -16,6 +16,7 @@ public:
 	float GetAngle() const;
 	glm::vec3 GetRotation() const;
 	glm::vec3 GetScale() const;
+	Model* GetModel();
 
 	void SetPosition(glm::vec3 position_);
 	void SetAngle(float angle_);
