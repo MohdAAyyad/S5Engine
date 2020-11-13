@@ -40,12 +40,12 @@ GameScene:: ~GameScene()
 
 	 appleObj->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
 	 appleObj->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 //appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
+	 appleObj->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
 
 	 appleObj2->SetScale(glm::vec3(0.4f, 0.4f, 0.4f));
 	 appleObj2->AddComponent<PhysicsComponent*>(new PhysicsComponent());
-	 //appleObj2->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
-	// appleObj2->AddComponent<ParticleEmitter*>(new ParticleEmitter(50, "BarWhite", "particlesShader"));
+	 appleObj2->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
+	//appleObj2->AddComponent<ParticleEmitter*>(new ParticleEmitter(50, "BarWhite", "particlesShader"));
 	 appleObj2->lateUpdate = true;
 	 //appleObj2->pm = appleObj2->GetComponent<ParticleEmitter*>();
 
@@ -71,18 +71,14 @@ GameScene:: ~GameScene()
 	 //appleObj->GetComponent<AudioSource*>()->PlaySound("Resources/Audio/pixelland.mp3", appleObj->GetPosition(), glm::vec3(0,0,0), 0.5f);
 	 
 	 //The OpenGL will color the corners and will interpolate the color in between the corners. This is because we only told it what the corners are colored as.
+
+
 	 return true;
  }
  void GameScene::Update(const float deltaTime_)
  {
 	 SceneGraph::GetInstance()->Update(deltaTime_);
 	 AudioHandler::GetInstance()->Update(deltaTime_);
-
-	/* if (CollisionDetection::GJK(apple, apple2))
-	 {
-		 Debugger::Info("WE HAVE COLLIDED", "GameScene.cpp", __LINE__);
-		 printf("WE HAVE COLLIDED");
-	 }*/
  }
 
  void GameScene::LateUpdate(const float deltaTime_)

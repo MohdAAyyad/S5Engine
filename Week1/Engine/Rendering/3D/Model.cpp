@@ -127,7 +127,7 @@ int Model::GetModelInstancesSize()
 	return modelInstance.size();
 }
 
-std::vector<Mesh*> Model::GetSubMeshes()
+std::vector<MeshBase*> Model::GetSubMeshes()
 {
 	return subMeshes;
 }

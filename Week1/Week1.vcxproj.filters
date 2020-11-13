@@ -123,6 +123,9 @@
     <ClCompile Include="Engine\Rendering\VulkanRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\JSON Reader\JSONReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Window.h">
@@ -260,6 +263,9 @@
     <ClInclude Include="Engine\FX\ParticleBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\JSON Reader\JSONReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Shaders\ColorFragmentShader.glsl" />
@@ -272,6 +278,7 @@
     <None Include="Engine\Shaders\SpriteVertShader.glsl" />
     <None Include="Engine\Shaders\ParticleVertShader.glsl" />
     <None Include="Engine\Shaders\ParticleFragShader.glsl" />
+    <None Include="Resources\JSONFiles\Test.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\BarYellow.png">

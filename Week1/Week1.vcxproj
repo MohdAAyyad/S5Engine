@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;C:\VulkanSDK\1.2.148.1\Include;C:\GameDev\json-develop\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;C:\VulkanSDK\1.2.148.1\Lib32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;C:\VulkanSDK\1.2.148.1\Include;C:\GameDev\json-develop\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;C:\VulkanSDK\1.2.148.1\Lib32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -164,6 +164,7 @@
     <ClCompile Include="Engine\Rendering\3D\LoadOBJModel.cpp" />
     <ClCompile Include="Engine\Rendering\GUI\GUIObject.cpp" />
     <ClCompile Include="Engine\Rendering\GUI\Components\GUIImageComponent.cpp" />
+    <ClCompile Include="Engine\JSON Reader\JSONReader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Engine\Core\Window.cpp" />
     <ClCompile Include="Engine\Core\Timer.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="Engine\FX\ParticleEmitter.h" />
     <ClInclude Include="Engine\Rendering\OpenGLRenderer.h" />
     <ClInclude Include="Engine\Rendering\VulkanRenderer.h" />
+    <ClInclude Include="Engine\JSON Reader\JSONReader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Shaders\ColorFragmentShader.glsl" />
@@ -241,6 +243,7 @@
     <None Include="Engine\Shaders\SpriteFragShader.glsl" />
     <None Include="Engine\Shaders\SpriteVertShader.glsl" />
     <None Include="Engine\Shaders\VertexShader.glsl" />
+    <None Include="Resources\JSONFiles\Test.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\BarWhite.png" />

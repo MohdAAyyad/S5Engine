@@ -27,7 +27,7 @@ public:
 	GLuint GetShaderProgram() const;
 	int GetModelInstancesSize();
 	
-	std::vector<Mesh*> GetSubMeshes();
+	std::vector<MeshBase*> GetSubMeshes();
 private:
 	std::vector<MeshBase*> subMeshes; //The meshes that compose the model
 	std::vector<glm::mat4> modelInstance; //Holds the transform matrices of all the instantiated models

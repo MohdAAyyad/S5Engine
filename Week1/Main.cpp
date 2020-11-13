@@ -1,5 +1,7 @@
 #include "Engine/Core/CoreEngine.h"
 #include "Game/Game1.h"
+#include "Engine/JSON Reader/JSONReader.h"
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
@@ -23,7 +25,17 @@ int main(int argc, char* argv[])
 
 	
 	CoreEngine::GetInstance()->SetGameInterface(new Game1);
-	if (!CoreEngine::GetInstance()->OnCreate("Week 1", 800, 600))
+	JSONReader::GetInstance()->LoadFile("./Resources/JSONFiles/Test.json");
+	std::string  windowTitle = JSONReader::GetInstance()->FindValue<std::string>("window");
+	int width = JSONReader::GetInstance()->FindValue<int>("width");
+	int height = JSONReader::GetInstance()->FindValue<int>("height");
+	int test = JSONReader::GetInstance()->FindNestedValue<int>("scone");
+
+
+	std::cout << "Loaded Window Name = " << windowTitle << " Loaded Height = " << height << " Loaded Width" << width << std::endl;
+	std::cout << test << std::endl;
+
+	if (!CoreEngine::GetInstance()->OnCreate(windowTitle, width, height))
 	{
 		Debugger::Fatal("Failed to create engine. Quitting program", "Main.cpp", __LINE__);
 		return -1;
