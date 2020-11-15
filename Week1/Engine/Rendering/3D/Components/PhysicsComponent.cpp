@@ -45,7 +45,7 @@ void PhysicsComponent::Update(float deltaTime_)
 		ownerObj->SetPosition(result);
 
 		//Calculate the rotational magnitude
-		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+		/*glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 		glm::vec3 axisOfRoatation = glm::cross(up, rotationalVelocity);
 		glm::vec3 rotationalMag = glm::normalize(rotationalVelocity) / radius;
 
@@ -60,6 +60,7 @@ void PhysicsComponent::Update(float deltaTime_)
 		//float angle_ = glm::acos(result2.w) * 2.0f * deltaTime_;
 		//Apply the angle
 		ownerObj->SetQuatRotation(result2);
+		*/
 	}
 }
 

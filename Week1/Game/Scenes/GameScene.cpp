@@ -46,10 +46,10 @@ GameScene:: ~GameScene()
 	 appleObj2->AddComponent<PhysicsComponent*>(new PhysicsComponent());
 	 appleObj2->GetComponent<PhysicsComponent*>()->SetupScenario(10, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(glm::radians(45.0f)), glm::vec3(0.0f, 1.0f, 0.0f), 45.0f, 2.0f);
 	//appleObj2->AddComponent<ParticleEmitter*>(new ParticleEmitter(50, "BarWhite", "particlesShader"));
-	 appleObj2->lateUpdate = true;
+	 //appleObj2->lateUpdate = true;
 	 //appleObj2->pm = appleObj2->GetComponent<ParticleEmitter*>();
 
-	 MouseEventListener::RegisterGameObject(appleObj2);
+	 //MouseEventListener::RegisterGameObject(appleObj2);
 
 	 SceneGraph::GetInstance()->AddGameObject(appleObj, "apple");
 	 SceneGraph::GetInstance()->AddGameObject(appleObj2, "apple2");
@@ -79,6 +79,14 @@ GameScene:: ~GameScene()
  {
 	 SceneGraph::GetInstance()->Update(deltaTime_);
 	 AudioHandler::GetInstance()->Update(deltaTime_);
+	 if (CollisionDetection::GJK(apple, apple2))
+	 {
+		 std::cout << "++++++++++++++++++++ Collision detected \n";
+	 }
+	 else
+	 {
+		 std::cout << "No collision \n";
+	 }
  }
 
  void GameScene::LateUpdate(const float deltaTime_)

@@ -104,7 +104,6 @@ Model* GameObject::GetModel()
 void GameObject::SetPosition(glm::vec3 position_)
 {
 	position = position_;
-
 	if (model)
 	{
 		model->UpdateInstance(modelInstance, position, angle, rotation, scale);

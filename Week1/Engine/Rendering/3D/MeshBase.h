@@ -29,6 +29,8 @@ class MeshBase
 public:
 	virtual void Render(Camera* camera_, std::vector<glm::mat4> instances_) = 0;
 	virtual void Render(Camera* camera_, glm::mat4 instance_) = 0;
+	SubMesh GetSubMesh() { return subMesh; };
+
 protected:
 	SubMesh subMesh;
 };
