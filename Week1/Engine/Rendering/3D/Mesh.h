@@ -12,7 +12,7 @@ public:
 	~Mesh();
 	void Render(Camera* camera_, std::vector<glm::mat4> instances_);
 	void Render(Camera* camera_, glm::mat4 instance_);
-	SubMesh GetSubMesh() override;
+	SubMesh GetSubMesh();
 private:
 	void GenerateBuffers();
 	GLuint VAO, VBO; //Check slides //VBO holds the data. //VAO tells opengl how the data is separated
